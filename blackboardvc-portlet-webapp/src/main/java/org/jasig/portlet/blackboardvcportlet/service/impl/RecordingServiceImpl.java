@@ -26,28 +26,28 @@ import com.elluminate.sas.BlackboardRecordingShortResponse;
 
 @Service("recordingService")
 public class RecordingServiceImpl implements RecordingService {
-	
+
 	private RecordingWSDao recordingWSDao;
 	private SessionRecordingDao recordingDao;
 	private JobMutexDao jobMutexDao;
 	private static final String RECORDING_DATA_FIX = "RECORDING_DATA_FIX";
 	protected final Logger logger = LoggerFactory.getLogger(getClass());
-	
+
 	@Autowired
 	public void setRecordingWSDao (RecordingWSDao recordingWSDao) {
 		this.recordingWSDao = recordingWSDao;
 	}
-	
+
 	@Autowired
 	public void setJobMutexDao (JobMutexDao dao) {
 	  this.jobMutexDao = dao;
 	}
-	
+
 	@Autowired
 	public void setRecordingDao (SessionRecordingDao dao) {
 		this.recordingDao = dao;
 	}
-	
+
     @Override
     public void updateSessionRecordings(long sessionId, long startTime, long endTime) {
         //fetch the recording long information from the web service
@@ -77,14 +77,14 @@ public class RecordingServiceImpl implements RecordingService {
     @PreAuthorize("hasRole('ROLE_ADMIN') || hasPermission(#recordingId, 'org.jasig.portlet.blackboardvcportlet.data.SessionRecording', 'delete')")
     public void removeRecording(long recordingId) {
         final SessionRecording sessionRecording = this.recordingDao.getSessionRecording(recordingId);
-        
+
         try {
             this.recordingWSDao.removeRecording(sessionRecording.getBbRecordingId());
         }
         catch (WebServiceClientException e) {
             //See if the recording actually exists
             final List<BlackboardRecordingShortResponse> recordings = this.recordingWSDao.getRecordingShort(null, null, sessionRecording.getSession().getBbSessionId(), null, null, null, null);
-            
+
             boolean exists = false;
             for (final BlackboardRecordingShortResponse recording : recordings) {
                 if (recording.getRecordingId() == sessionRecording.getBbRecordingId()) {
@@ -92,25 +92,25 @@ public class RecordingServiceImpl implements RecordingService {
                     break;
                 }
             }
-            
+
             //Recording exists but we failed to remove it, throw the exception
             if (exists) {
                 throw e;
             }
-            
+
             //Recording doesn't exist on the BB side, remove our local DB version
         }
         this.recordingDao.deleteRecording(sessionRecording);
     }
-    
+
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Override
     public int[] datafixRecordings(DateTime startDate, DateTime endDate) {
       return datafixRecordings(startDate, endDate, false);
     }
-    
+
     /**
-     * 
+     *
      * @param startDate beginning datetime
      * @param endDate end datetime
      * @param cron ran from cron?
@@ -135,12 +135,12 @@ public class RecordingServiceImpl implements RecordingService {
         }
         return returnArray;
     }
-    
+
     /**
      * Run cron job every day at 10am
-     * @throws UnknownHostException 
+     * @throws UnknownHostException
      */
-    @Scheduled(cron = "0 0 10 * * *")
+    @Scheduled(cron = "0 0 0,12 * * *")
     @Override
     public void cronDatafixRecordings() throws UnknownHostException {
       try {
