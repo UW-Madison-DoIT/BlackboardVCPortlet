@@ -64,12 +64,12 @@ public class ViewSessionListController
 	private SessionDao sessionDao;
 	private SessionService sessionService;
 	private ConferenceUserDao conferenceUserDao;
-	
+
 	@Autowired
     public void setConferenceUserService(ConferenceUserService conferenceUserService) {
         this.conferenceUserService = conferenceUserService;
     }
-	
+
 	@Autowired
 	public void setSessionService(SessionService service) {
 		this.sessionService = service;
@@ -89,25 +89,25 @@ public class ViewSessionListController
 	public String view(PortletRequest request, ModelMap model, @RequestParam(required = false) String deleteSessionError, @RequestParam(required = false) String deleteRecordingError)
 	{
 		final ConferenceUser conferenceUser = this.conferenceUserService.getCurrentConferenceUser();
-		
+
 		//Get all the sessions for the user
 		final Set<Session> sessions = new HashSet<Session>();
-		
+
 		final Set<Session> ownedSessionsForUser = this.conferenceUserDao.getOwnedSessionsForUser(conferenceUser);
         sessions.addAll(ownedSessionsForUser);
-            
+
         final Set<Session> chairedSessionsForUser = this.conferenceUserDao.getChairedSessionsForUser(conferenceUser);
         sessions.addAll(chairedSessionsForUser);
-        
+
         final Set<Session> nonChairedSessionsForUser = this.conferenceUserDao.getNonChairedSessionsForUser(conferenceUser);
         sessions.addAll(nonChairedSessionsForUser);
-        
+
         Matcher<DateTime> afterNow = new BaseMatcher<DateTime>() {
 			@Override
 			public void describeTo(Description arg0) {
 				//don't care
 			}
-			
+
 			@Override
 			public boolean matches(Object arg0) {
 				DateTime now = DateTime.now();
@@ -115,13 +115,13 @@ public class ViewSessionListController
 				return arg.isAfter(now);
 			}
 		};
-		
+
 		Matcher<DateTime> beforeOrIsNow = new BaseMatcher<DateTime>() {
 			@Override
 			public void describeTo(Description arg0) {
 				//don't care
 			}
-			
+
 			@Override
 			public boolean matches(Object arg0) {
 				DateTime now = DateTime.now();
@@ -130,7 +130,7 @@ public class ViewSessionListController
 			}
 		};
 
-        
+
         //this.is.awesome!
         List<Session> upcomingSessions = filter(having(on(Session.class).getEndTime(),afterNow),sessions);
         List<Session> completedSessions = filter(having(on(Session.class).getEndTime(),beforeOrIsNow),sessions);
@@ -153,13 +153,14 @@ public class ViewSessionListController
 			//Get information for all sessions
 		    final Set<SessionRecording> sessionRecordings = this.sessionDao.getSessionRecordings(session);
 		    recordings.addAll(sessionRecordings);
-		    
+
 		    //get launch URL
 		    sessionService.populateLaunchUrl(conferenceUser, session);
 		}
 		model.addAttribute("recordings", Ordering.from(SessionRecordingDisplayComparator.INSTANCE).sortedCopy(recordings));
-		
-		if(WindowState.MAXIMIZED.equals(request.getWindowState())) {
+
+		if(WindowState.MAXIMIZED.equals(request.getWindowState())
+				|| "exclusive".equals(request.getWindowState().toString())) {
 			return "viewSessionsMax";
 		} else {
 			return "viewSessionsNormal";
