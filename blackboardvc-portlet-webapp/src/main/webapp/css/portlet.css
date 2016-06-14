@@ -294,3 +294,88 @@ li.ui-timepicker-selected .ui-timepicker-duration,
     font-weight: 600;
     cursor: pointer;
 }
+
+/* Overriding Styles to be inline with http://f5c4d8.axshare.com/#p=home */
+
+.ui-tabs .ui-tabs-panel .centered-content{
+    text-align: center;
+}
+
+.ui-tabs .ui-tabs-panel .centered-content h2{
+    font-size: 30px;
+    font-weight: 700;
+}
+.ui-tabs .ui-tabs-panel .centered-content p.highlighted-link a {
+    color: #0479a8 !important;
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+.my-uw .btn-flat, .my-uw .btn-flat:hover{
+    background-color: #0479a8;
+    box-shadow: 4px 4px 6px #bcbcbc;
+    transition: none;
+    transform:none;
+    border-bottom: none;
+}
+.my-uw .btn-flat{
+    margin: 20px 0px;
+    padding: 15px 20px;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

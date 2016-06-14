@@ -25,24 +25,13 @@
 
 <div id="${n}blackboardCollaboratePortlet" class="blackboardVCRoot">
 <portlet:renderURL var="createSessionUrl" portletMode="EDIT" windowState="${windowState}" />
-<table width="100%" style='margin-bottom: 10px;'>
-    <tbody>
-      <tr>
-        <td align="left" colspan="3">
-          <a href="${createSessionUrl }" id="create-user" class="btn btn-flat uportal-button"><spring:message code="scheduleWebConferencingSession" text="scheduleWebConferencingSession"/></a>
-       </td>
-        <td align="right" width="2em" colspan="1">
-        <c:if test="${!empty prefs['helpUrl'][0]}">
-          <a href="${prefs['helpUrl'][0]}" target="_blank" class="btn btn-outline uportal-button"><spring:message code="help" text="help"/></a>
-        </c:if>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<c:if test="${!empty prefs['helpUrl'][0]}">
+  <a href="${prefs['helpUrl'][0]}" target="_blank" class="btn btn-outline uportal-button"><spring:message code="help" text="help"/></a>
+</c:if>
 <div id="${n}tabs" class="dl-tabs ui-tabs ui-widget ui-widget-content ui-corner-all inner-nav-container">
   <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all inner-nav">
-    <li class="ui-state-default ui-corner-top"><a href="#${n}tabs-1">Upcoming</a></li>
-    <li class="ui-state-default ui-corner-top"><a href="#${n}tabs-2">Completed</a></li>
+    <li class="ui-state-default ui-corner-top"><a href="#${n}tabs-1">Scheduled sessions</a></li>
+    <li class="ui-state-default ui-corner-top"><a href="#${n}tabs-2">Past sessions</a></li>
   </ul>
 <div id="${n}tabs-1">
 <portlet:actionURL portletMode="EDIT" var="deleteSessionActionUrl">
@@ -82,7 +71,12 @@
       </table>
     </c:when>
     <c:otherwise>
-      <b>There are no upcoming web conferences.</b>
+      <div class="centered-content">
+        <h2 class="view-title">Schedule a web conference!</h2>
+        <b>No sessions scheduled</b>
+        <p><a href="${createSessionUrl }" id="create-user" class="btn btn-flat uportal-button"><spring:message code="scheduleWebConferencingSession" text="scheduleWebConferencingSession"/></a></p>
+        <p class="highlighted-link"><a href="#${n}tabs-2">See past web conference sessions</a></p>
+      </div>
     </c:otherwise>
   </c:choose>
 </form>
