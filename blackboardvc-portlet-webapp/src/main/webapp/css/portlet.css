@@ -296,6 +296,11 @@ li.ui-timepicker-selected .ui-timepicker-duration,
 }
 
 /* Overriding Styles to be inline with http://f5c4d8.axshare.com/#p=home */
+h1{
+    font-size: 32px;
+    font-weight: 700;
+    color:#212121;
+}
 
 .ui-tabs .ui-tabs-panel .centered-content{
     text-align: center;
