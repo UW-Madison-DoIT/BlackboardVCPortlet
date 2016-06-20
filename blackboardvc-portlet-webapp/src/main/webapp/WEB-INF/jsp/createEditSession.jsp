@@ -64,9 +64,11 @@
 		    <label for="startDateAndTime" class="col-md-4"><spring:message code="startDateAndTime" text="startDateAndTime"/></label>
 		    <div class="col-md-8">
 				  <form:errors path="" cssClass="error"/>
+				  <span class="datepair">
 		          <form:input id="${n}startdatepicker" class="date start" path="startDate" style="width: 82px;"/>&nbsp;
 		          
 		          <form:input id="${n}startHourMinute" class="time start ui-timepicker-input" path="startHourMinute" style="width: 82px;"/>&nbsp;
+		      	  </span>
 		          &nbsp;<spring:message code="centralTime" text="centralTime"/>
 		          &nbsp;<form:errors path="startDate" cssClass="error"/>
 		          &nbsp;<form:errors path="startHour" cssClass="error"/>
