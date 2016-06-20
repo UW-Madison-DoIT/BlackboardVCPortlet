@@ -339,6 +339,16 @@ h1{
 .bb-content-container .form-group .col-md-3 select{
     float: left;
 }
+div[id^="Pluto_996_u115l1n107_12861_"] th{
+    background-color: #ffffff !important;
+    color: #000000;
+    font-size: 16px;
+    border-bottom: solid 1px #000000;
+    line-height: 40px;
+}
+div[id^="Pluto_996_u115l1n107_12861_"] td{
+    line-height: 40px;
+}
 
 
 
