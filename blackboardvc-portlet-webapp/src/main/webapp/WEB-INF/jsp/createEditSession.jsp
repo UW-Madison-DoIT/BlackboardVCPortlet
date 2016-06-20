@@ -25,7 +25,7 @@
 <div id="${n}" class="blackboardVCRoot">
 <c:if test="${!empty prefs['helpUrl'][0]}">
 	<div class="help-link">
-	  <a href="${prefs['helpUrl'][0]}" target="_blank" class="btn btn-default uportal-button"><spring:message code="help" text="help"/></a>
+	  <a href="${prefs['helpUrl'][0]}" target="_blank" class="btn btn-flat uportal-button"><spring:message code="help" text="help"/></a>
 	</div>
 </c:if>
 <h2><spring:message code="scheduleSession" text="scheduleSession"/></h2>

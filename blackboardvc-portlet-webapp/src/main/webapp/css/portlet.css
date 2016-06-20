@@ -333,7 +333,12 @@ h1{
     text-align: right;
     
 }
-
+.bb-content-container h4{
+    text-decoration: underline;
+}
+.bb-content-container .form-group .col-md-3 select{
+    float: left;
+}
 
 
 
