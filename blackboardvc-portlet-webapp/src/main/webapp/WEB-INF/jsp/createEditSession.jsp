@@ -219,7 +219,7 @@
 			        </c:otherwise>
 			      </c:choose>
 			      <div class="form-group row">
-			      	<div class="col-md-offset-4 col-md-9">
+			      	<div class="col-md-offset-3 col-md-9">
 			      	<a href="${cancelAction}" class="btn btn-default uportal-button"><spring:message code="cancel" text="cancel"/></a>
 			      	<spring:message code="saveSession" var="saveSession" text="saveSession"/>
                   <input class="btn btn-success uportal-button" value="${saveSession}" type="submit">
