@@ -27,7 +27,7 @@
 <portlet:renderURL var="createSessionUrl" portletMode="EDIT" windowState="${windowState}"/>
 <portlet:renderURL var="maxViewURL" portletMode="VIEW" windowState="${windowState}"/>
 <c:if test="${!empty prefs['helpUrl'][0]}">
-        	<div class="help-link"><a href="${prefs['helpUrl'][0]}" target="_blank" class="btn btn-outline uportal-button"><spring:message code="help" text="help"/></a></div>
+        	<a href="${prefs['helpUrl'][0]}" target="_blank" class="btn btn-outline uportal-button"><spring:message code="help" text="help"/></a>
         </c:if>
         
 <div id="${n}tabs">
