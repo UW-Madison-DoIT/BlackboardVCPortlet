@@ -26,7 +26,7 @@
 <div id="${n}blackboardCollaboratePortlet" class="blackboardVCRoot">
 <portlet:renderURL var="createSessionUrl" portletMode="EDIT" windowState="${windowState}" />
 <c:if test="${!empty prefs['helpUrl'][0]}">
-  <a href="${prefs['helpUrl'][0]}" target="_blank" class="btn btn-outline uportal-button"><spring:message code="help" text="help"/></a>
+  <div class="help-link"><a href="${prefs['helpUrl'][0]}" target="_blank" class="btn btn-outline uportal-button"><spring:message code="help" text="help"/></a></div>
 </c:if>
 <div id="${n}tabs" class="dl-tabs ui-tabs ui-widget ui-widget-content ui-corner-all inner-nav-container">
   <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all inner-nav">

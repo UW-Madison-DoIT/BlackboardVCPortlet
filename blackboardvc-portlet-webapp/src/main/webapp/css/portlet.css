@@ -339,7 +339,7 @@ h1{
 .bb-content-container .form-group .col-md-3 select{
     float: left;
 }
-div[id^="Pluto_996_u115l1n107_12861_"] th{
+.blackboardVCRoot div[id^="Pluto_996_u115l1n107_12861_"] th{
     background-color: #ffffff !important;
     color: #000000;
     font-size: 16px;
@@ -357,9 +357,16 @@ td{
     padding-top:5px;
     padding-bottom:5px;
 }
+.blackboardVCRoot .help-link {
+    float: none;
+    padding-bottom: 1em;
+    clear: both;
+    height: 45px;
+}
 
-
-
+.blackboardVCRoot .help-link a{
+    float: right;
+}
 
 
 
