@@ -316,7 +316,7 @@ h1{
     font-weight: 700;
 }
 
-.my-uw .btn-flat, .my-uw .btn-flat:hover, .my-uw .btn-default{
+.my-uw .btn-flat, .my-uw .btn-flat:hover{
     background-color: #0479a8;
     box-shadow: 4px 4px 6px #bcbcbc;
     transition: none;
@@ -352,6 +352,10 @@ div[id^="Pluto_996_u115l1n107_12861_"] td{
 
 th, td{
     padding:0 10px;
+}
+td{
+    padding-top:5px;
+    padding-bottom:5px;
 }
 
 
