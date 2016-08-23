@@ -22,22 +22,20 @@
 
 <%@ include file="/WEB-INF/jsp/include.jsp"%>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
-
+<portlet:renderURL var="backUrl" portletMode="VIEW" />
 <div id="${n}blackboardCollaboratePortlet" class="blackboardVCRoot">
 <c:if test="${!empty prefs['helpUrl'][0]}">
 	<div class="help-link">
+	  <a href="${backUrl}" class="btn btn-default btn-green uportal-button"><< Back to Session List</a>	
 	  <a href="${createSessionUrl }" id="create-user" class="btn btn-small-blue uportal-button"><spring:message code="scheduleWebConferencingSession" text="scheduleWebConferencingSession"/></a>
 	  <a href="${prefs['helpUrl'][0]}" target="_blank" class="btn btn-default uportal-button"><spring:message code="help" text="help"/></a>
 	</div>
 </c:if>
-<portlet:renderURL var="backUrl" portletMode="VIEW" />
-<a href="${backUrl}" class="btn btn-default uportal-button">&lt; Back to Session List</a>
-<br/>
 
 <div class="viewSession">
 	<div class="row">
 		<div class="col-md-9">
-			<div class="col-md-12">
+			<div>
 				<div class="session-large-heading">${session.sessionName}</div>
 				<span class="session-status">
 				<c:choose>
@@ -88,7 +86,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="session-large-heading">Invite participants to your web conference</div>
-			<p>There are 2 ways to invite participants to your web conference.  Invite participants and update participant session settngs.</p>
+			<p class="session-descriptive-text">There are 2 ways to invite participants to your web conference.  Invite participants and update participant session settngs.</p>
 			<div class="session-guest-choice-one">
 				<div class="session-medium-heading">Send participants a Guest Link they can share publically</div>
 				<sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
@@ -113,7 +111,7 @@
 					</portlet:renderURL>
 			    	<a href="${addParticipantsUrl}" class="btn btn-default uportal-button">+ Email Participants</a>
 				</sec:authorize>	
-
+			<strong>Participants:</strong>
 			<ul>
 		      <c:forEach var="user" items="${sessionChairs}">
 		        <li>${user.displayName} (<spring:message code="moderator" text="moderator"/>)</li>
@@ -140,8 +138,9 @@
 			<c:if test="${telephonyEnabled eq 'true' }" >
 			<table>
 				<tr>
-					<th style="text-align: left;">Telephony Information</th>
-					<th style="text-align: right">
+					<div class="session-large-heading">Configure telephone options (optional)</div>
+					<p class="session-descriptive-text">Enter this information if you are using your own telephone line for audio during the web conference.</p>
+					
 						<sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
 							<portlet:renderURL var="configTelephonyURL" portletMode="EDIT" windowState="${windowState}">
 								<portlet:param name="sessionId" value="${session.sessionId}" />
@@ -149,24 +148,21 @@
 							</portlet:renderURL>
 							<a href="${configTelephonyURL }" class="btn btn-default uportal-button">Configure Telephony</a>
 						</sec:authorize>
-					</th>
-				</tr>
+					
 				<c:choose>
 					<c:when test="${!empty sessionTelephony }">
 						<sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
 							<!-- Only want to see chair number/pin if chair -->
-							<tr class="even">
-								<td>
+							<div>
 		                            <label for="moderatorPhone">
 		                                <span class="uportal-channel-strong">
 		                                    <spring:message code="moderatorPhone" text="Moderator Phone" />
 		                                </span>
-		                            </label>
-								</td>
-								<td>
+		                            </label>&nbsp;
+								<span>
 									${sessionTelephony.chairPhone }<c:if test="${!empty sessionTelephony.chairPIN }">&nbsp;PIN: ${sessionTelephony.chairPIN }</c:if>
-								</td>
-							</tr>
+								</span>
+							</div>
 						</sec:authorize>
 						<tr class="odd">
 							<td>

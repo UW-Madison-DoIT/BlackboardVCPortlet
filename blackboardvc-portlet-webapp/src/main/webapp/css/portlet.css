@@ -408,6 +408,13 @@ div.viewSession a.btn:hover, div.viewSession a.btn:active{
     transition: none !important;
     transform:none !important;
 }
+div.viewSession ul{
+    padding-left: 0px;
+}
+div.viewSession ul li{
+    font-size: 16px;
+    text-transform: capitalize;
+}
 .session-label, .session-status {
     font-size: 18px;
     font-weight: bold;
@@ -425,6 +432,7 @@ div.viewSession a.btn:hover, div.viewSession a.btn:active{
     border-top: solid 1px;
     margin-top: 50px;
     text-align: center;
+    margin-bottom: -20px;
 }
 .divider span{
     font-size: 20px;
@@ -435,7 +443,10 @@ div.viewSession a.btn:hover, div.viewSession a.btn:active{
     margin: -78px auto;
     width: 60px;
 }
-.session-guest-choice-one, .session-guest-choice-two{
+.session-guest-choice-one{
+    padding-top:40px;
+}
+.session-guest-choice-one, .session-guest-choice-two, .divider{
     margin-left:40px;
 
 }
@@ -444,6 +455,9 @@ div.viewSession a.btn:hover, div.viewSession a.btn:active{
     color:#666666;
     font-weight: 700;
     display: block;
+}
+hr{
+    border-top:1px solid #666666;
 }
 
 
