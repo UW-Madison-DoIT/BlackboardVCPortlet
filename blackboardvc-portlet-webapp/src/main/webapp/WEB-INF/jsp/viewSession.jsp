@@ -38,7 +38,41 @@
 	<div class="row">
 		<div class="col-md-9">
 			<div class="col-md-12">
-				<span class="session-name">${session.sessionName}</span>&nbsp;<a href="#" title="${ statusText}" class="${n}toolTip"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a>
+				<span class="session-name session-label">${session.sessionName}</span>&nbsp;
+				<span class="session-status">
+				<c:choose>
+				       <c:when test="${session.endTime.beforeNow}">
+				         <spring:message code="sessionIsClosed" text="sessionIsClosed"/>
+				       </c:when>
+				       <c:otherwise>
+				     	<c:choose>
+				  	   <c:when test="${session.startTimeWithBoundaryTime.beforeNow}">
+				  	      	<a href='${session.launchUrl}' target="_blank"><spring:message code="joinNow" text="joinNow"/></a>
+				  	   </c:when>
+				  	   <c:otherwise>
+				  	    	${session.timeUntilJoin}
+				  	   </c:otherwise>
+				         </c:choose>
+				       </c:otherwise>
+			       </c:choose>
+		   		</span>
+		   		<div class="session-date-time">
+		   			<joda:format value="${session.startTime}" pattern="M dd, yyyy hh:mm z" /> to <joda:format value="${session.endTime}" pattern="M dd, yyyy hh:mm z" />
+		   		</div>
+		   		<div class="session-moderator">
+		   			<span class="session-label">Moderator Link</span>&nbsp;
+		   			<sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
+					      <label for="moderatorLinkDesc">
+					                <span class="uportal-channel-strong">
+					                    <spring:message code="moderatorLink" text="moderatorLink"/>
+					                </span>
+					                <br/>
+					                <span class="uportal-channel-table-caption"><spring:message code="moderatorLinkDesc" text="moderatorLinkDesc"/></span>
+					            </label>
+					        <a href="${session.launchUrl}" target="_blank">${session.launchUrl}</a>
+					    </sec:authorize>
+					    <p>Use this link to access your web conference session. ONLY send this link to other moderators.</p>
+		   		</div>
 			</div>
 		</div>
 		<div class="col-md-3">
@@ -51,61 +85,31 @@
 			</sec:authorize>
 		</div>
 	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<span class="session-large-heading">Invite participants to your web conference</span>
+			<p>There are 2 ways to invite participants to your web conference.  Invite participants and update participant session settngs.</p>
+
+			<sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
+		    This is the guest link
+		      <label for="guestLink">
+		                <span class="uportal-channel-strong">
+		                    <spring:message code="guestLink" text="guestLink"/>
+		                </span>
+		                <br/>
+		                <span class="uportal-channel-table-caption"><spring:message code="guestLinkDesc" text="guestLinkDesc"/></span>
+		            </label>
+		            <a href="${session.guestUrl}" target="_blank">${session.guestUrl}</a>
+		    </sec:authorize>
+		</div>
+	</div>
 </div>
 
 <table class="viewSession">
   <tbody>
   	
-    <tr><td><label for="sessionName"></label></td><td></td></tr>
-    <tr class="even"><td><label for="startTime"><span class="uportal-channel-strong"><spring:message code="startTime" text="startTime"/></span></label></td><td><joda:format value="${session.startTime}" pattern="MM/dd/yyyy HH:mm z" /></td></tr>
-    <tr><td><label for="endTime"><span class="uportal-channel-strong"><spring:message code="endTime" text="endTime"/></span></label></td><td><joda:format value="${session.endTime}" pattern="MM/dd/yyyy HH:mm z" /></td></tr>
-    <tr class="even">
-    	<spring:message code="statusText" text="statusText" var="statusText" htmlEscape="false" />
-    	<td><label for="status"><span class="uportal-channel-strong"><spring:message code="status" text="Status"/></span>&nbsp;</label></td>
-    	<td>
-    		<c:choose>
-		       <c:when test="${session.endTime.beforeNow}">
-		         <spring:message code="sessionIsClosed" text="sessionIsClosed"/>
-		       </c:when>
-		       <c:otherwise>
-		     	<c:choose>
-		  	   <c:when test="${session.startTimeWithBoundaryTime.beforeNow}">
-		  	      	<a href='${session.launchUrl}' target="_blank"><spring:message code="joinNow" text="joinNow"/></a>
-		  	   </c:when>
-		  	   <c:otherwise>
-		  	    	${session.timeUntilJoin}
-		  	   </c:otherwise>
-		         </c:choose>
-		       </c:otherwise>
-	       </c:choose>
-    	</td>
-    </tr>
-    <sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
-      <tr>
-        <td>
-            <label for="moderatorLinkDesc">
-                <span class="uportal-channel-strong">
-                    <spring:message code="moderatorLink" text="moderatorLink"/>
-                </span>
-                <br/>
-                <span class="uportal-channel-table-caption"><spring:message code="moderatorLinkDesc" text="moderatorLinkDesc"/></span>
-            </label>
-        </td>
-        <td><a href="${session.launchUrl}" target="_blank">${session.launchUrl}</a></td></tr>
-    </sec:authorize>
-    <sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
-      <tr class="even">
-        <td>
-            <label for="guestLink">
-                <span class="uportal-channel-strong">
-                    <spring:message code="guestLink" text="guestLink"/>
-                </span>
-                <br/>
-                <span class="uportal-channel-table-caption"><spring:message code="guestLinkDesc" text="guestLinkDesc"/></span>
-            </label>
-        </td>
-        <td><a href="${session.guestUrl}" target="_blank">${session.guestUrl}</a></td></tr>
-    </sec:authorize>
+    
+    
   </tbody>
 </table>
 <c:if test="${telephonyEnabled eq 'true' }" >
