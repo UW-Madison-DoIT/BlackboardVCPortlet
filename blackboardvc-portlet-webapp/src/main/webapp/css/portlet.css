@@ -368,6 +368,26 @@ td{
     float: right;
 }
 
+.btn-small-blue{
+    background-color: #0479a8;
+    box-shadow: none;
+    transition: none;
+    transform:none;
+    border-bottom: none;
+    color: #ffffff;
+    font-size: 16px;
+    margin-left: 30px;
+    transform: none;
+    background: #ffffff;
+    color: #0479a8;
+    border: solid 1px #0479a8;
+}
+.btn-small-blue:hover, .btn-small-blue:active{
+    background: #ffffff;
+    color: #0479a8;
+    border: solid 1px #0479a8;
+}
+
 
 
 
