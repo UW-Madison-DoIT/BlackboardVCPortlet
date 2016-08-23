@@ -57,21 +57,19 @@
 			       </c:choose>
 		   		</span>
 		   		<div class="session-date-time">
-		   			<joda:format value="${session.startTime}" pattern="month dd, yyyy hh:mm a z" /> to <joda:format value="${session.endTime}" pattern="month dd, yyyy hh:mm a z" />
+		   			<joda:format value="${session.startTime}" pattern="MMM dd, yyyy hh:mm a z" /> to <joda:format value="${session.endTime}" pattern="MMM dd, yyyy hh:mm a z" />
 		   		</div>
 		   		<div class="session-moderator">
-		   			<span class="session-label">Moderator Link</span>&nbsp;
 		   			<sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
 					      <label for="moderatorLinkDesc">
 					                <span class="uportal-channel-strong">
 					                    <spring:message code="moderatorLink" text="moderatorLink"/>
 					                </span>
-					                <br/>
-					                <span class="uportal-channel-table-caption"><spring:message code="moderatorLinkDesc" text="moderatorLinkDesc"/></span>
+					               
 					            </label>
 					        <a href="${session.launchUrl}" target="_blank">${session.launchUrl}</a>
+					        <span class="uportal-channel-table-caption"><spring:message code="moderatorLinkDesc" text="moderatorLinkDesc"/></span>
 					    </sec:authorize>
-					    <p>Use this link to access your web conference session. ONLY send this link to other moderators.</p>
 		   		</div>
 			</div>
 		</div>
@@ -96,14 +94,34 @@
 		                <span class="uportal-channel-strong">
 		                    <spring:message code="guestLink" text="guestLink"/>
 		                </span>
-		                <br/>
-		                <span class="uportal-channel-table-caption"><spring:message code="guestLinkDesc" text="guestLinkDesc"/></span>
-		            </label>
+		                </label>
 		            <a href="${session.guestUrl}" target="_blank">${session.guestUrl}</a>
+		            <span class="uportal-channel-table-caption"><spring:message code="guestLinkDesc" text="guestLinkDesc"/></span>
 		    	</sec:authorize>
-		    	<p>Use this Guest Link to invite participants to a public web conference session, allowing users to invite other participants freely.</p>
 			</div>
 			<div class="divider"><span>OR</span></div>
+			<div class="session-guest-choice-two">
+
+				<div class="session-large-heading">Send participants an email invite</div>
+				<span class="uportal-channel-table-caption">Use this to invite participants to a private web conference session via email. Participants will recieve a unique link to enter their session.</span>
+				<sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
+			    	<portlet:renderURL var="addParticipantsUrl" portletMode="EDIT" windowState="${windowState}">
+					    <portlet:param name="sessionId" value="${session.sessionId}" />
+					    <portlet:param name="action" value="addParticipants" />
+					</portlet:renderURL>
+			    	<a href="${addParticipantsUrl}" class="btn btn-default uportal-button">+ Email Participants</a>
+				</sec:authorize>	
+
+			<ul>
+		      <c:forEach var="user" items="${sessionChairs}">
+		        <li>${user.displayName} (<spring:message code="moderator" text="moderator"/>)</li>
+		      </c:forEach>
+		      <c:forEach var="user" items="${sessionNonChairs}">
+		        <li>${user.displayName}</li>
+		      </c:forEach>
+		    </ul>
+		    
+			</div>
 		</div>
 	</div>
 </div>
@@ -185,35 +203,7 @@
 	<tr>
 		<th colspan="2" style="text-align :left;"><spring:message code="additionalInfo" text="Additional Information"/></th>
 	</tr>
-	<tr class="even">
-		<td>
-            <label for="particpants">
-                <span class="uportal-channel-strong">
-                    <spring:message code="participants" text="participants"/>
-                </span>
-                <spring:message code="tooltip.participants" text="tooltip.participants" var="tooltipParticipants" htmlEscape="false" />
-                &nbsp;<a href="#" title="${ tooltipParticipants}" class="${n}toolTip"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a>
-            </label>
-		</td>
-		<td>
-			<ul>
-		      <c:forEach var="user" items="${sessionChairs}">
-		        <li>${user.displayName} (<spring:message code="moderator" text="moderator"/>)</li>
-		      </c:forEach>
-		      <c:forEach var="user" items="${sessionNonChairs}">
-		        <li>${user.displayName}</li>
-		      </c:forEach>
-		    </ul>
-		    <br/>
-		    <sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
-		    	<portlet:renderURL var="addParticipantsUrl" portletMode="EDIT" windowState="${windowState}">
-				    <portlet:param name="sessionId" value="${session.sessionId}" />
-				    <portlet:param name="action" value="addParticipants" />
-				</portlet:renderURL>
-		    	<a href="${addParticipantsUrl}" class="btn btn-default uportal-button">Invite / Edit Participant(s)</a>
-			</sec:authorize>		
-		</td>
-	</tr>
+	
 	<tr class="odd">
 		<td>
             <label for="presentationFile">
