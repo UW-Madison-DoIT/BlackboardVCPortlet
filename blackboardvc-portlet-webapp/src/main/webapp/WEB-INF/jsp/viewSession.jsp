@@ -26,7 +26,7 @@
 <div id="${n}blackboardCollaboratePortlet" class="blackboardVCRoot">
 <c:if test="${!empty prefs['helpUrl'][0]}">
 	<div class="help-link">
-	  <a href="${backUrl}" class="btn btn-default btn-green uportal-button"><< Back to Session List</a>	
+	  <a href="${backUrl}" class="btn btn-default btn-back uportal-button"><< Back to Session List</a>	
 	  <a href="${createSessionUrl }" id="create-user" class="btn btn-small-blue uportal-button"><spring:message code="scheduleWebConferencingSession" text="scheduleWebConferencingSession"/></a>
 	  <a href="${prefs['helpUrl'][0]}" target="_blank" class="btn btn-default uportal-button"><spring:message code="help" text="help"/></a>
 	</div>
@@ -54,6 +54,13 @@
 				       </c:otherwise>
 			       </c:choose>
 		   		</span>
+		   		<c:choose>
+					<c:when test="${!empty recordings }">
+						<div>
+							<a href="#recordings">View Recordings</a>
+						</div>
+					</c:when>
+				</c:choose>
 		   		<div class="session-date-time">
 		   			<joda:format value="${session.startTime}" pattern="MMM dd, yyyy hh:mm a z" /> to <joda:format value="${session.endTime}" pattern="MMM dd, yyyy hh:mm a z" />
 		   		</div>
@@ -187,7 +194,7 @@
 						</div>
 					</c:when>
 					<c:otherwise>
-						<span class=""><spring:message code="notelephony" text="No telephone options set. This session will utilize the default integrated telephone."/></span>
+						<span>No telephone options set. This session will utilize the default integrated telephone.</span>
 					</c:otherwise>
 				</c:choose>
 		</c:if>
@@ -212,9 +219,7 @@
                 <span class="uportal-channel-strong">
                     <spring:message code="presentationFile" text="Presentation File" />
                 </span>
-                <spring:message code="tooltip.presentationFile" text="tooltip.presentationFile" var="tooltipPresentationFile" htmlEscape="false" />
-                &nbsp;<a href="#" title="${ tooltipPresentationFile}" class="${n}toolTip"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a>
-                <br/>
+                
                 <span class="session-descriptive-text"><spring:message code="presentationFileDesc" text="" /></span>
             </label>
             <portlet:actionURL portletMode="EDIT" var="managePresentationActionUrl" />
@@ -253,9 +258,6 @@
 	                <span class="uportal-channel-strong">
 	                    <spring:message code="mediaFiles" text="Media Files" />
 	                </span>
-	                <spring:message code="tooltip.mediaFiles" text="tooltip.mediaFiles" var="tooltipMediaFiles" htmlEscape="false" />
-	                &nbsp;<a href="#" title="${ tooltipMediaFiles}" class="${n}toolTip"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a>
-	                <br/>
 	                <span class="session-descriptive-text"><spring:message code="mediaFilesDesc" text="" /></span>
 	            </label>
 	            <c:choose>
@@ -275,14 +277,15 @@
 				    <portlet:param name="sessionId" value="${session.sessionId}" />
 				    <portlet:param name="action" value="manageMediaFiles" />
 				</portlet:renderURL>
-		    	<a href="${addMediaFileUrl}" class="btn btn-default uportal-button">Upload Media File(s)</a>
+		    	<a href="${addMediaFileUrl}">Upload Media File(s)</a>
            	</div.
 		</div>
 	</div>
 </div>
 
 <table class="viewSession">
-	
+	<a name="recordings"></a>
+	<div class="session-large-heading">Upload media and presentation files</div>
 	<tr class="odd">
 		<td>
             <label for="recordings">
