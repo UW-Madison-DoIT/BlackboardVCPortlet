@@ -68,7 +68,7 @@
 					               
 					            </label>
 					        <a href="${session.launchUrl}" target="_blank">${session.launchUrl}</a>
-					        <span class="uportal-channel-table-caption"><spring:message code="moderatorLinkDesc" text="moderatorLinkDesc"/></span>
+					        <span class="session-descriptive-text"><spring:message code="moderatorLinkDesc" text="moderatorLinkDesc"/></span>
 					    </sec:authorize>
 		   		</div>
 			</div>
@@ -83,6 +83,8 @@
 			</sec:authorize>
 		</div>
 	</div>
+</div>
+<div class="viewSession">
 	<div class="row">
 		<div class="col-md-12">
 			<div class="session-large-heading">Invite participants to your web conference</div>
@@ -96,14 +98,14 @@
 		                </span>
 		                </label>
 		            <a href="${session.guestUrl}" target="_blank">${session.guestUrl}</a>
-		            <span class="uportal-channel-table-caption"><spring:message code="guestLinkDesc" text="guestLinkDesc"/></span>
+		            <span class="session-descriptive-text"><spring:message code="guestLinkDesc" text="guestLinkDesc"/></span>
 		    	</sec:authorize>
 			</div>
 			<div class="divider"><span>OR</span></div>
 			<div class="session-guest-choice-two">
 
 				<div class="session-large-heading">Send participants an email invite</div>
-				<span class="uportal-channel-table-caption">Use this to invite participants to a private web conference session via email. Participants will recieve a unique link to enter their session.</span>
+				<span class="session-descriptive-text">Use this to invite participants to a private web conference session via email. Participants will recieve a unique link to enter their session.</span>
 				<sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
 			    	<portlet:renderURL var="addParticipantsUrl" portletMode="EDIT" windowState="${windowState}">
 					    <portlet:param name="sessionId" value="${session.sessionId}" />
@@ -126,78 +128,91 @@
 	</div>
 </div>
 
-<table class="viewSession">
-  <tbody>
-  	
-    
-    
-  </tbody>
-</table>
-<c:if test="${telephonyEnabled eq 'true' }" >
-	<br/>
-	<table class="viewSession">
-		<tr>
-			<th style="text-align: left;">Telephony Information</th>
-			<th style="text-align: right">
-				<sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
-					<portlet:renderURL var="configTelephonyURL" portletMode="EDIT" windowState="${windowState}">
-						<portlet:param name="sessionId" value="${session.sessionId}" />
-					    <portlet:param name="action" value="configureTelephony" />
-					</portlet:renderURL>
-					<a href="${configTelephonyURL }" class="btn btn-default uportal-button">Configure Telephony</a>
-				</sec:authorize>
-			</th>
-		</tr>
-		<c:choose>
-			<c:when test="${!empty sessionTelephony }">
-				<sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
-					<!-- Only want to see chair number/pin if chair -->
-					<tr class="even">
-						<td>
-                            <label for="moderatorPhone">
-                                <span class="uportal-channel-strong">
-                                    <spring:message code="moderatorPhone" text="Moderator Phone" />
-                                </span>
-                            </label>
-						</td>
-						<td>
-							${sessionTelephony.chairPhone }<c:if test="${!empty sessionTelephony.chairPIN }">&nbsp;PIN: ${sessionTelephony.chairPIN }</c:if>
-						</td>
-					</tr>
-				</sec:authorize>
-				<tr class="odd">
-					<td>
-                        <label for="participantPhone">
-                            <span class="uportal-channel-strong">
-                                <spring:message code="participantPhone" text="Participant Phone" />
-                            </span>
-                        </label>
-					</td>
-					<td>
-						${sessionTelephony.nonChairPhone } <c:if test="${!empty sessionTelephony.nonChairPIN }">&nbsp;PIN:&nbsp;${sessionTelephony.nonChairPIN }</c:if>
-					</td>
-				</tr>
-				<tr class="even">
-					<td>
-                        <label for="SIPPhone">
-                            <span class="uportal-channel-strong">
-                                <spring:message code="SIPPhone" text="SIP Phone" />
-                            </span>
-                        </label>
-					</td>
-					<td>
-						${sessionTelephony.sessionSIPPhone } <c:if test="${!empty sessionTelephony.sessionPIN }">&nbsp;PIN:&nbsp;${sessionTelephony.sessionPIN }</c:if>
-					</td>
-				</tr>
-			</c:when>
-			<c:otherwise>
+<div class="row">
+	<div class="col-md-12">
+		<hr />
+	</div>
+</div>
+
+<div class="viewSession">
+	<div class="row">
+		<div class="col-md-12">
+			<c:if test="${telephonyEnabled eq 'true' }" >
+			<table>
 				<tr>
-					<td colspan='2'><spring:message code="notelephony" text="No Telephony set. This session will utilize the default integrated telephony."/></td>
+					<th style="text-align: left;">Telephony Information</th>
+					<th style="text-align: right">
+						<sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
+							<portlet:renderURL var="configTelephonyURL" portletMode="EDIT" windowState="${windowState}">
+								<portlet:param name="sessionId" value="${session.sessionId}" />
+							    <portlet:param name="action" value="configureTelephony" />
+							</portlet:renderURL>
+							<a href="${configTelephonyURL }" class="btn btn-default uportal-button">Configure Telephony</a>
+						</sec:authorize>
+					</th>
 				</tr>
-			</c:otherwise>
-		</c:choose>
-	</table>
-</c:if>
+				<c:choose>
+					<c:when test="${!empty sessionTelephony }">
+						<sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
+							<!-- Only want to see chair number/pin if chair -->
+							<tr class="even">
+								<td>
+		                            <label for="moderatorPhone">
+		                                <span class="uportal-channel-strong">
+		                                    <spring:message code="moderatorPhone" text="Moderator Phone" />
+		                                </span>
+		                            </label>
+								</td>
+								<td>
+									${sessionTelephony.chairPhone }<c:if test="${!empty sessionTelephony.chairPIN }">&nbsp;PIN: ${sessionTelephony.chairPIN }</c:if>
+								</td>
+							</tr>
+						</sec:authorize>
+						<tr class="odd">
+							<td>
+		                        <label for="participantPhone">
+		                            <span class="uportal-channel-strong">
+		                                <spring:message code="participantPhone" text="Participant Phone" />
+		                            </span>
+		                        </label>
+							</td>
+							<td>
+								${sessionTelephony.nonChairPhone } <c:if test="${!empty sessionTelephony.nonChairPIN }">&nbsp;PIN:&nbsp;${sessionTelephony.nonChairPIN }</c:if>
+							</td>
+						</tr>
+						<tr class="even">
+							<td>
+		                        <label for="SIPPhone">
+		                            <span class="uportal-channel-strong">
+		                                <spring:message code="SIPPhone" text="SIP Phone" />
+		                            </span>
+		                        </label>
+							</td>
+							<td>
+								${sessionTelephony.sessionSIPPhone } <c:if test="${!empty sessionTelephony.sessionPIN }">&nbsp;PIN:&nbsp;${sessionTelephony.sessionPIN }</c:if>
+							</td>
+						</tr>
+					</c:when>
+					<c:otherwise>
+						<tr>
+							<td colspan='2'><spring:message code="notelephony" text="No Telephony set. This session will utilize the default integrated telephony."/></td>
+						</tr>
+					</c:otherwise>
+				</c:choose>
+			</table>
+		</c:if>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<hr />
+	</div>
+</div>
+
+
+
 <br/>
 <table class="viewSession">
 	<tr>
@@ -213,7 +228,7 @@
                 <spring:message code="tooltip.presentationFile" text="tooltip.presentationFile" var="tooltipPresentationFile" htmlEscape="false" />
                 &nbsp;<a href="#" title="${ tooltipPresentationFile}" class="${n}toolTip"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a>
                 <br/>
-                <span class="uportal-channel-table-caption"><spring:message code="presentationFileDesc" text="" /></span>
+                <span class="session-descriptive-text"><spring:message code="presentationFileDesc" text="" /></span>
             </label>
 		</td>
 		<td>
@@ -258,7 +273,7 @@
                 <spring:message code="tooltip.mediaFiles" text="tooltip.mediaFiles" var="tooltipMediaFiles" htmlEscape="false" />
                 &nbsp;<a href="#" title="${ tooltipMediaFiles}" class="${n}toolTip"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a>
                 <br/>
-                <span class="uportal-channel-table-caption"><spring:message code="mediaFilesDesc" text="" /></span>
+                <span class="session-descriptive-text"><spring:message code="mediaFilesDesc" text="" /></span>
             </label>
 		</td>
 		<td>
@@ -308,7 +323,11 @@
 		</td>
 	</tr>
 </table>   
-
+<div class="row">
+	<div class="col-md-12">
+		<a href="${backUrl}" class="btn btn-default btn-green uportal-button">Save Session</a>
+	</div>
+</div>
 <script type="text/javascript">
 (function($) {
    $(document).ready(function() {

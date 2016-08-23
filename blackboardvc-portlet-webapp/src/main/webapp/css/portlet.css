@@ -387,16 +387,50 @@ td{
 }
 
 div.viewSession{
-    padding:3% 0;
+    padding:3% 0 0;
 }
 div.viewSession a{
     color: #0479a8 !important
+}
+div.viewSession a.btn{
+    background-color: #0479a8 !important;
+    box-shadow: none !important;
+    transition: none !important;
+    transform:none !important;
+    border-bottom: none !important;
+    color: #ffffff !important;
+    font-size: 16px;
+}
+div.viewSession a.btn:hover, div.viewSession a.btn:active{
+    background: #ffffff !important;
+    color: #0479a8 !important;
+    border: solid 1px #0479a8 !important;
+    transition: none !important;
+    transform:none !important;
 }
 .session-label, .session-status {
     font-size: 18px;
     font-weight: bold;
 }
-
+.session-large-heading {
+    font-size: 22px;
+    font-weight: bold;
+}
+.divider{
+    padding: 60px 0 10px;
+    border-top: solid 1px;
+    margin-top: 50px;
+    text-align: center;
+}
+.divider span{
+    font-size: 20px;
+    font-weight: bold;
+    display: block;
+    background: #ffffff;
+    text-align: center;
+    margin: -78px auto;
+    width: 60px;
+}
 
 
 
