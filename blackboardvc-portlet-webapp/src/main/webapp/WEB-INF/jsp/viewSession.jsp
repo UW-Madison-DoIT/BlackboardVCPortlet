@@ -33,26 +33,35 @@
 <portlet:renderURL var="backUrl" portletMode="VIEW" />
 <a href="${backUrl}" class="btn btn-default uportal-button">&lt; Back to Session List</a>
 <br/>
+
+<div class="viewSession">
+	<div class="row">
+		<div class="col-md-9">
+			<div class="col-md-12">
+				<span class="session-name">${session.sessionName}</span>&nbsp;<a href="#" title="${ statusText}" class="${n}toolTip"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
+				<portlet:renderURL var="editSessionUrl" portletMode="EDIT" windowState="${windowState}" >
+					<portlet:param name="sessionId" value="${session.sessionId}" />
+					<portlet:param name="action" value="editSession" />
+				</portlet:renderURL>
+	  			<a href="${editSessionUrl}" class="btn btn-default uportal-button"><spring:message code="editSession" text="Edit Session"/></a>
+			</sec:authorize>
+		</div>
+	</div>
+</div>
+
 <table class="viewSession">
   <tbody>
-  	<tr>
-  		<th style="text-align: left;"><spring:message code="sessionSummary"/></th>
-  		<th style="text-align: right;">
-  		<sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
-		  <portlet:renderURL var="editSessionUrl" portletMode="EDIT" windowState="${windowState}" >
-		    <portlet:param name="sessionId" value="${session.sessionId}" />
-		    <portlet:param name="action" value="editSession" />
-		  </portlet:renderURL>
-  		  <a href="${editSessionUrl}" class="btn btn-default uportal-button"><spring:message code="editSession" text="Edit Session"/></a>
-		  </sec:authorize>
-		</th>
-		</tr>
-    <tr><td><label for="sessionName"><span class="uportal-channel-strong"><spring:message code="sessionName" text="sessionName"/></span></label></td><td>${session.sessionName}</td></tr>
+  	
+    <tr><td><label for="sessionName"></label></td><td></td></tr>
     <tr class="even"><td><label for="startTime"><span class="uportal-channel-strong"><spring:message code="startTime" text="startTime"/></span></label></td><td><joda:format value="${session.startTime}" pattern="MM/dd/yyyy HH:mm z" /></td></tr>
     <tr><td><label for="endTime"><span class="uportal-channel-strong"><spring:message code="endTime" text="endTime"/></span></label></td><td><joda:format value="${session.endTime}" pattern="MM/dd/yyyy HH:mm z" /></td></tr>
     <tr class="even">
     	<spring:message code="statusText" text="statusText" var="statusText" htmlEscape="false" />
-    	<td><label for="status"><span class="uportal-channel-strong"><spring:message code="status" text="Status"/></span>&nbsp;<a href="#" title="${ statusText}" class="${n}toolTip"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a></label></td>
+    	<td><label for="status"><span class="uportal-channel-strong"><spring:message code="status" text="Status"/></span>&nbsp;</label></td>
     	<td>
     		<c:choose>
 		       <c:when test="${session.endTime.beforeNow}">
