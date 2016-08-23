@@ -111,7 +111,7 @@
 					</portlet:renderURL>
 			    	<a href="${addParticipantsUrl}" class="btn btn-default uportal-button">+ Email Participants</a>
 				</sec:authorize>	
-			<strong>Participants:</strong>
+			<div><strong>Participants:</strong></div>
 			<ul>
 		      <c:forEach var="user" items="${sessionChairs}">
 		        <li>${user.displayName} (<spring:message code="moderator" text="moderator"/>)</li>
@@ -131,15 +131,14 @@
 		<hr />
 	</div>
 </div>
-
+<!-- Might need adjustment as this is not testable on test -->
 <div class="viewSession">
 	<div class="row">
 		<div class="col-md-12">
-			<c:if test="${telephonyEnabled eq 'true' }" >
-			<table>
-				<tr>
-					<div class="session-large-heading">Configure telephone options (optional)</div>
+			<div class="session-large-heading">Configure telephone options (optional)</div>
 					<p class="session-descriptive-text">Enter this information if you are using your own telephone line for audio during the web conference.</p>
+					
+			<c:if test="${telephonyEnabled eq 'true' }" >
 					
 						<sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
 							<portlet:renderURL var="configTelephonyURL" portletMode="EDIT" windowState="${windowState}">
@@ -164,38 +163,33 @@
 								</span>
 							</div>
 						</sec:authorize>
-						<tr class="odd">
-							<td>
+						<div>
+							
 		                        <label for="participantPhone">
 		                            <span class="uportal-channel-strong">
 		                                <spring:message code="participantPhone" text="Participant Phone" />
 		                            </span>
-		                        </label>
-							</td>
-							<td>
+		                        </label>&nbsp;
+							<span>
 								${sessionTelephony.nonChairPhone } <c:if test="${!empty sessionTelephony.nonChairPIN }">&nbsp;PIN:&nbsp;${sessionTelephony.nonChairPIN }</c:if>
-							</td>
-						</tr>
-						<tr class="even">
-							<td>
+							</span>
+						</div>
+						<div>
+							
 		                        <label for="SIPPhone">
 		                            <span class="uportal-channel-strong">
 		                                <spring:message code="SIPPhone" text="SIP Phone" />
 		                            </span>
-		                        </label>
-							</td>
-							<td>
+		                        </label>&nbsp;
+							<span>
 								${sessionTelephony.sessionSIPPhone } <c:if test="${!empty sessionTelephony.sessionPIN }">&nbsp;PIN:&nbsp;${sessionTelephony.sessionPIN }</c:if>
-							</td>
-						</tr>
+							</span>
+						</div>
 					</c:when>
 					<c:otherwise>
-						<tr>
-							<td colspan='2'><spring:message code="notelephony" text="No Telephony set. This session will utilize the default integrated telephony."/></td>
-						</tr>
+						<span class=""><spring:message code="notelephony" text="No telephone options set. This session will utilize the default integrated telephone."/></span>
 					</c:otherwise>
 				</c:choose>
-			</table>
 		</c:if>
 		</div>
 	</div>
@@ -208,16 +202,13 @@
 </div>
 
 
-
-<br/>
-<table class="viewSession">
-	<tr>
-		<th colspan="2" style="text-align :left;"><spring:message code="additionalInfo" text="Additional Information"/></th>
-	</tr>
-	
-	<tr class="odd">
-		<td>
-            <label for="presentationFile">
+<div class="viewSession">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="session-large-heading">Upload media and presentation files</div>
+			<p class="session-descriptive-text">Upload files that will be used during the web conference.</p>
+			<div class="view-session-presentation">
+			<label for="presentationFile">
                 <span class="uportal-channel-strong">
                     <spring:message code="presentationFile" text="Presentation File" />
                 </span>
@@ -226,9 +217,7 @@
                 <br/>
                 <span class="session-descriptive-text"><spring:message code="presentationFileDesc" text="" /></span>
             </label>
-		</td>
-		<td>
-			<portlet:actionURL portletMode="EDIT" var="managePresentationActionUrl" />
+            <portlet:actionURL portletMode="EDIT" var="managePresentationActionUrl" />
 		    <form action="${managePresentationActionUrl}" method="post" enctype="multipart/form-data">
 		      <input type="hidden" name="sessionId" value="${session.sessionId}" />
 		      <input type="hidden" name="needToSendInitialEmail" value="false" />
@@ -257,42 +246,43 @@
               </c:if>
               <spring:message code="uploadPresentation" var="uploadPresentation" text="uploadPresentation"/>
            	  <input value="${uploadPresentation}" name="action" class="btn btn-default uportal-button" type="submit">
-           	</form>
-		</td>
-	</tr>
-	<tr class="even">
-		<td>
-            <label for="mediaFiles">
-                <span class="uportal-channel-strong">
-                    <spring:message code="mediaFiles" text="Media Files" />
-                </span>
-                <spring:message code="tooltip.mediaFiles" text="tooltip.mediaFiles" var="tooltipMediaFiles" htmlEscape="false" />
-                &nbsp;<a href="#" title="${ tooltipMediaFiles}" class="${n}toolTip"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a>
-                <br/>
-                <span class="session-descriptive-text"><spring:message code="mediaFilesDesc" text="" /></span>
-            </label>
-		</td>
-		<td>
-			<c:choose>
-				<c:when test="${!empty multimedias }">
-					<ul>
-						<c:forEach items="${multimedias}" var="multimediaItem" varStatus="loopStatus">
-				            <li>${multimediaItem.filename}</li>
-				        </c:forEach>
-			        </ul>
-	        	</c:when>
-	        	<c:otherwise>
-	        		No Media files Uploaded
-	        		<br/>
-	        	</c:otherwise>
-        	</c:choose>
-			<portlet:renderURL var="addMediaFileUrl" portletMode="EDIT" windowState="${windowState}" >
-			    <portlet:param name="sessionId" value="${session.sessionId}" />
-			    <portlet:param name="action" value="manageMediaFiles" />
-			</portlet:renderURL>
-	    	<a href="${addMediaFileUrl}" class="btn btn-default uportal-button">Upload Media File(s)</a>
-		</td>
-	</tr>
+           	</form>	
+           </div>
+           <div class="view-session-media">
+           		<label for="mediaFiles">
+	                <span class="uportal-channel-strong">
+	                    <spring:message code="mediaFiles" text="Media Files" />
+	                </span>
+	                <spring:message code="tooltip.mediaFiles" text="tooltip.mediaFiles" var="tooltipMediaFiles" htmlEscape="false" />
+	                &nbsp;<a href="#" title="${ tooltipMediaFiles}" class="${n}toolTip"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a>
+	                <br/>
+	                <span class="session-descriptive-text"><spring:message code="mediaFilesDesc" text="" /></span>
+	            </label>
+	            <c:choose>
+					<c:when test="${!empty multimedias }">
+						<ul>
+							<c:forEach items="${multimedias}" var="multimediaItem" varStatus="loopStatus">
+					            <li>${multimediaItem.filename}</li>
+					        </c:forEach>
+				        </ul>
+		        	</c:when>
+		        	<c:otherwise>
+		        		No Media files Uploaded
+		        		<br/>
+		        	</c:otherwise>
+	        	</c:choose>
+				<portlet:renderURL var="addMediaFileUrl" portletMode="EDIT" windowState="${windowState}" >
+				    <portlet:param name="sessionId" value="${session.sessionId}" />
+				    <portlet:param name="action" value="manageMediaFiles" />
+				</portlet:renderURL>
+		    	<a href="${addMediaFileUrl}" class="btn btn-default uportal-button">Upload Media File(s)</a>
+           	</div.
+		</div>
+	</div>
+</div>
+
+<table class="viewSession">
+	
 	<tr class="odd">
 		<td>
             <label for="recordings">

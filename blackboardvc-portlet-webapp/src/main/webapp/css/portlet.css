@@ -387,7 +387,7 @@ td{
 }
 
 div.viewSession{
-    padding:3% 0 0;
+    padding:3% 0 2%;
 }
 div.viewSession a{
     color: #0479a8 !important
@@ -412,7 +412,7 @@ div.viewSession ul{
     padding-left: 0px;
 }
 div.viewSession ul li{
-    font-size: 16px;
+    font-size: 14px;
     text-transform: capitalize;
 }
 .session-label, .session-status {
@@ -458,6 +458,8 @@ div.viewSession ul li{
 }
 hr{
     border-top:1px solid #666666;
+    margin-top:45px;
+    margin-bottom:45px;
 }
 
 
