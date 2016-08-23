@@ -369,18 +369,14 @@ td{
 }
 
 .btn-small-blue{
-    background-color: #0479a8;
-    box-shadow: none;
-    transition: none;
-    transform:none;
-    border-bottom: none;
-    color: #ffffff;
+    background-color: #0479a8 !important;
+    box-shadow: none !important;
+    transition: none !important;
+    transform:none !important;
+    border-bottom: none !important;
+    color: #ffffff !important;
     font-size: 16px;
-    margin-left: 30px;
-    transform: none;
-    background: #ffffff;
-    color: #0479a8;
-    border: solid 1px #0479a8;
+    margin-left: 30px !important;
 }
 .btn-small-blue:hover, .btn-small-blue:active{
     background: #ffffff;
