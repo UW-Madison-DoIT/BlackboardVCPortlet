@@ -72,7 +72,9 @@
 					                </span>
 					               
 					            </label>
-					        <a href="${session.launchUrl}" target="_blank">${session.launchUrl}</a>
+					        <!--<a href="${session.launchUrl}" target="_blank">${session.launchUrl}</a>-->
+					        <a href="#" title="Please copy the following moderator url: ${session.launchUrl}" class="${n}toolTip">Copy Moderator Link</a>
+                <br/>
 					        <span class="session-descriptive-text"><spring:message code="moderatorLinkDesc" text="moderatorLinkDesc"/></span>
 					    </sec:authorize>
 		   		</div>

@@ -377,6 +377,7 @@ td{
     color: #ffffff !important;
     font-size: 16px;
     margin-left: 30px !important;
+    border: solid 1px #0479a8 !important;
 }
 .btn-small-blue:hover, .btn-small-blue:active{
     background: #ffffff !important;
@@ -400,6 +401,7 @@ div.viewSession a.btn{
     border-bottom: none !important;
     color: #ffffff !important;
     font-size: 16px;
+    border: solid 1px #0479a8 !important;
 }
 div.viewSession a.btn:hover, div.viewSession a.btn:active{
     background: #ffffff !important;
