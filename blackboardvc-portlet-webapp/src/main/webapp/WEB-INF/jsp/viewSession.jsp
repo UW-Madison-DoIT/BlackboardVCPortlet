@@ -38,7 +38,7 @@
 	<div class="row">
 		<div class="col-md-9">
 			<div class="col-md-12">
-				<span class="session-name session-label">${session.sessionName}</span>&nbsp;
+				<div class="session-large-heading">${session.sessionName}</div>
 				<span class="session-status">
 				<c:choose>
 				       <c:when test="${session.endTime.beforeNow}">
@@ -90,7 +90,7 @@
 			<div class="session-large-heading">Invite participants to your web conference</div>
 			<p>There are 2 ways to invite participants to your web conference.  Invite participants and update participant session settngs.</p>
 			<div class="session-guest-choice-one">
-				<div class="session-large-heading">Send participants a Guest Link they can share publically</div>
+				<div class="session-medium-heading">Send participants a Guest Link they can share publically</div>
 				<sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
 		    	<label for="guestLink">
 		                <span class="uportal-channel-strong">
@@ -104,7 +104,7 @@
 			<div class="divider"><span>OR</span></div>
 			<div class="session-guest-choice-two">
 
-				<div class="session-large-heading">Send participants an email invite</div>
+				<div class="session-medium-heading">Send participants an email invite</div>
 				<span class="session-descriptive-text">Use this to invite participants to a private web conference session via email. Participants will recieve a unique link to enter their session.</span>
 				<sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
 			    	<portlet:renderURL var="addParticipantsUrl" portletMode="EDIT" windowState="${windowState}">

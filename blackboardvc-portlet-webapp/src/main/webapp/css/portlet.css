@@ -413,6 +413,10 @@ div.viewSession a.btn:hover, div.viewSession a.btn:active{
     font-weight: bold;
 }
 .session-large-heading {
+    font-size: 28px;
+    font-weight: bold;
+}
+.session-medium-heading {
     font-size: 22px;
     font-weight: bold;
 }
@@ -430,6 +434,16 @@ div.viewSession a.btn:hover, div.viewSession a.btn:active{
     text-align: center;
     margin: -78px auto;
     width: 60px;
+}
+.session-guest-choice-one, .session-guest-choice-two{
+    margin-left:40px;
+
+}
+.session-descriptive-text{
+    font-size: 16px;
+    color:#666666;
+    font-weight: 700;
+    display: block;
 }
 
 
