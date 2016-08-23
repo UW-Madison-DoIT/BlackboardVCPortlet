@@ -410,6 +410,9 @@ div.viewSession a.btn:hover, div.viewSession a.btn:active{
     transition: none !important;
     transform:none !important;
 }
+a.btn.btn-default.btn-back.uportal-button {
+    float: left;
+}
 div.viewSession ul{
     padding-left: 0px;
 }
@@ -431,7 +434,7 @@ div.viewSession ul li{
 }
 .divider{
     padding: 60px 0 10px;
-    border-top: solid 1px;
+    border-top: solid 1px #999999;
     margin-top: 50px;
     text-align: center;
     margin-bottom: -20px;
@@ -444,6 +447,7 @@ div.viewSession ul li{
     text-align: center;
     margin: -78px auto;
     width: 60px;
+    color:#999999;
 }
 .session-guest-choice-one{
     padding-top:40px;
