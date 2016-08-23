@@ -57,7 +57,7 @@
 			       </c:choose>
 		   		</span>
 		   		<div class="session-date-time">
-		   			<joda:format value="${session.startTime}" pattern="M dd, yyyy hh:mm z" /> to <joda:format value="${session.endTime}" pattern="M dd, yyyy hh:mm z" />
+		   			<joda:format value="${session.startTime}" pattern="month dd, yyyy hh:mm a z" /> to <joda:format value="${session.endTime}" pattern="month dd, yyyy hh:mm a z" />
 		   		</div>
 		   		<div class="session-moderator">
 		   			<span class="session-label">Moderator Link</span>&nbsp;
@@ -87,12 +87,12 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<span class="session-large-heading">Invite participants to your web conference</span>
+			<div class="session-large-heading">Invite participants to your web conference</div>
 			<p>There are 2 ways to invite participants to your web conference.  Invite participants and update participant session settngs.</p>
-
-			<sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
-		    This is the guest link
-		      <label for="guestLink">
+			<div class="session-guest-choice-one">
+				<div class="session-large-heading">Send participants a Guest Link they can share publically</div>
+				<sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
+		    	<label for="guestLink">
 		                <span class="uportal-channel-strong">
 		                    <spring:message code="guestLink" text="guestLink"/>
 		                </span>
@@ -100,7 +100,10 @@
 		                <span class="uportal-channel-table-caption"><spring:message code="guestLinkDesc" text="guestLinkDesc"/></span>
 		            </label>
 		            <a href="${session.guestUrl}" target="_blank">${session.guestUrl}</a>
-		    </sec:authorize>
+		    	</sec:authorize>
+		    	<p>Use this Guest Link to invite participants to a public web conference session, allowing users to invite other participants freely.</p>
+			</div>
+			<div class="divider"><span>OR</span></div>
 		</div>
 	</div>
 </div>

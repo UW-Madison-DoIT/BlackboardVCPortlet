@@ -386,6 +386,17 @@ td{
     transform:none !important;
 }
 
+div.viewSession{
+    padding:3% 0;
+}
+div.viewSession a{
+    color: #0479a8 !important
+}
+.session-label, .session-status {
+    font-size: 18px;
+    font-weight: bold;
+}
+
 
 
 
