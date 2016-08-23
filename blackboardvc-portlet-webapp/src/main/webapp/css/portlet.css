@@ -339,14 +339,14 @@ h1{
 .bb-content-container .form-group .col-md-3 select{
     float: left;
 }
-.blackboardVCRoot div[id^="Pluto_996_u115l1n107_12861_"] th{
+.blackboardVCRoot div[id^="Pluto_996_u115l1n107_12861_"] th, .blackboardVCRoot  div[id^="Pluto_2396_u8461l1n153_12861_"] th{
     background-color: #ffffff !important;
     color: #000000;
     font-size: 16px;
     border-bottom: solid 1px #000000;
     line-height: 40px;
 }
-div[id^="Pluto_996_u115l1n107_12861_"] td{
+div[id^="Pluto_996_u115l1n107_12861_"] td, div[id^="Pluto_2396_u8461l1n153_12861_"] td{
     line-height: 40px;
 }
 
@@ -379,9 +379,11 @@ td{
     margin-left: 30px !important;
 }
 .btn-small-blue:hover, .btn-small-blue:active{
-    background: #ffffff;
-    color: #0479a8;
-    border: solid 1px #0479a8;
+    background: #ffffff !important;
+    color: #0479a8 !important;
+    border: solid 1px #0479a8 !important;
+    transition: none !important;
+    transform:none !important;
 }
 
 
