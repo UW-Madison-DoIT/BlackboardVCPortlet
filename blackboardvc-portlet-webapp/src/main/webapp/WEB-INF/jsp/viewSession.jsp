@@ -55,9 +55,6 @@
 				       </c:otherwise>
 			       </c:choose>
 		   		</span>
-		   		<div>
-							<a href="#recordings">View Recordings</a>
-						</div>
 		   		<c:choose>
 					<c:when test="${!empty recordings }">
 						<div>
@@ -310,15 +307,15 @@
 		<div class="col-md-12">
 			<c:choose>
 				<c:when test="${!empty recordings }">
-			<ul>
-				<c:forEach items="${recordings }" var="recording">
-					<li><a href="${recording.recordingUrl}" target="_blank">${recording.roomName}</a></li>
-				</c:forEach>
-			</ul>
-			</c:when>
-			<c:otherwise>
-				No Recordings available
-			</c:otherwise>
+				<ul>
+					<c:forEach items="${recordings }" var="recording">
+						<li><a href="${recording.recordingUrl}" target="_blank">${recording.roomName}</a></li>
+					</c:forEach>
+				</ul>
+				</c:when>
+				<c:otherwise>
+					No Recordings available
+				</c:otherwise>
 			</c:choose>
 		</div>
 	</div>   
