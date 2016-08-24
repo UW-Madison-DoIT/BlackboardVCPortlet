@@ -303,9 +303,9 @@
 		<hr />
 	</div>
 </div>
-
+<a name="recordings"></a>
 <div class="viewSession">
-	<a name="recordings"></a>
+	
 	<div class="session-large-heading"><spring:message code="recordings" text="Recordings" /></div>
 	<div class="row">
 		<div class="col-md-3">
@@ -313,8 +313,6 @@
                 <span class="uportal-channel-strong">
                     <spring:message code="recordings" text="Recordings" />
                 </span>
-                <spring:message code="tooltip.recordings" text="tooltip.recordings" var="tooltipRecordings" htmlEscape="false" />
-                &nbsp;<a href="#" title="${ tooltipRecordings}" class="${n}toolTip"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a>
             </label>
 		</div>
 		<div class="col-md-9">
@@ -335,6 +333,7 @@
 </div>	
 <div class="row">
 	<div class="col-md-12">
+		<a href="${backUrl}" class="btn btn-default uportal-button">Cancel edit</a>
 		<a href="${backUrl}" class="btn btn-success uportal-button">Save Session</a>
 	</div>
 </div>
