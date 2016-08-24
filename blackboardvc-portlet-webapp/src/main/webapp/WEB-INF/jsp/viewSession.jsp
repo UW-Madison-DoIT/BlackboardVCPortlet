@@ -250,13 +250,13 @@
 				              <span class="uploadButton">
 							     <input name="presentationUpload" size="40" type="file" accept="${presentationFileTypes}">
 				              </span>
-				              <br />
-				              <spring:message code="presentationFileDesc" var="presentationFileDesc" text="presentationFileDesc"/>
-				              
-				              <br/>
 				              <c:if test="${!empty presentationUploadError}">
 				                  <span class="error">${presentationUploadError}</span>
 				              </c:if>
+				              <br />
+				              <span class="session-descriptive-text"><spring:message code="presentationFileDesc" text="" /></span>
+				              <br/>
+				              
 				              <spring:message code="uploadPresentation" var="uploadPresentation" text="uploadPresentation"/>
 				           	  <input value="${uploadPresentation}" name="action" class="btn btn-default uportal-button" type="submit">
 				           	</form>	
@@ -288,7 +288,7 @@
 				</portlet:renderURL>
 				<!--<input value="${addMediaFileUrl}" name="action" class="btn btn-default uportal-button" type="submit">-->
 				 <br />
-				 <spring:message code="mediaFilesDesc" var="mediaFilesDesc" text="mediaFilesDesc"/>
+				 <span class="session-descriptive-text"><spring:message code="mediaFilesDesc" text="" /></span>
 				                        	
 		    	<a href="${addMediaFileUrl}" class="btn btn-default uportal-button">Upload Media File(s)</a>
 	        </div>
@@ -305,17 +305,9 @@
 </div>
 <a name="recordings"></a>
 <div class="viewSession">
-	
 	<div class="session-large-heading"><spring:message code="recordings" text="Recordings" /></div>
 	<div class="row">
-		<div class="col-md-3">
-            <label for="recordings">
-                <span class="uportal-channel-strong">
-                    <spring:message code="recordings" text="Recordings" />
-                </span>
-            </label>
-		</div>
-		<div class="col-md-9">
+		<div class="col-md-12">
 			<c:choose>
 				<c:when test="${!empty recordings }">
 			<ul>
