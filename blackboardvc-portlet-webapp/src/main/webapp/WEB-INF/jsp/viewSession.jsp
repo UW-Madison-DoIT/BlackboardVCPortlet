@@ -247,9 +247,12 @@
 							  </c:otherwise>
 							  </c:choose>
 							  <br/>
-				              <span class="btn btn-default uploadButton">
+				              <span class="uploadButton">
 							     <input name="presentationUpload" size="40" type="file" accept="${presentationFileTypes}">
 				              </span>
+				              <br />
+				              <spring:message code="presentationFileDesc" var="presentationFileDesc" text="presentationFileDesc"/>
+				              
 				              <br/>
 				              <c:if test="${!empty presentationUploadError}">
 				                  <span class="error">${presentationUploadError}</span>
@@ -264,7 +267,7 @@
            <div class="view-session-media">
 
            	<div class="form-group row">
-		    <label for="sessionName" class="col-md-3"><spring:message code="mediaFiles" text="Media Files" /><spring:message code="sessionName" text="sessionName"/></label>
+		    <label for="sessionName" class="col-md-3"><spring:message code="mediaFiles" text="Media Files" /></label>
 		    <div class="col-md-9">
 			    <c:choose>
 					<c:when test="${!empty multimedias }">
@@ -283,7 +286,11 @@
 				    <portlet:param name="sessionId" value="${session.sessionId}" />
 				    <portlet:param name="action" value="manageMediaFiles" />
 				</portlet:renderURL>
-		    	<a href="${addMediaFileUrl}">Upload Media File(s)</a>
+				<!--<input value="${addMediaFileUrl}" name="action" class="btn btn-default uportal-button" type="submit">-->
+				 <br />
+				 <spring:message code="mediaFilesDesc" var="mediaFilesDesc" text="mediaFilesDesc"/>
+				                        	
+		    	<a href="${addMediaFileUrl}" class="btn btn-default uportal-button">Upload Media File(s)</a>
 	        </div>
 		  </div>
            	</div>
@@ -291,11 +298,17 @@
 	</div>
 </div>
 
-<table class="viewSession">
+<div class="row">
+	<div class="col-md-12">
+		<hr />
+	</div>
+</div>
+
+<div class="viewSession">
 	<a name="recordings"></a>
-	<div class="session-large-heading">Upload media and presentation files</div>
-	<tr class="odd">
-		<td>
+	<div class="session-large-heading"><spring:message code="recordings" text="Recordings" /></div>
+	<div class="row">
+		<div class="col-md-3">
             <label for="recordings">
                 <span class="uportal-channel-strong">
                     <spring:message code="recordings" text="Recordings" />
@@ -303,8 +316,8 @@
                 <spring:message code="tooltip.recordings" text="tooltip.recordings" var="tooltipRecordings" htmlEscape="false" />
                 &nbsp;<a href="#" title="${ tooltipRecordings}" class="${n}toolTip"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a>
             </label>
-		</td>
-		<td>
+		</div>
+		<div class="col-md-9">
 			<c:choose>
 				<c:when test="${!empty recordings }">
 			<ul>
@@ -317,9 +330,9 @@
 				No Recordings available
 			</c:otherwise>
 			</c:choose>
-		</td>
-	</tr>
-</table>   
+		</div>
+	</div>   
+</div>	
 <div class="row">
 	<div class="col-md-12">
 		<a href="${backUrl}" class="btn btn-success uportal-button">Save Session</a>

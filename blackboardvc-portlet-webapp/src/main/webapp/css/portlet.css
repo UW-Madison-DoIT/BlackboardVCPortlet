@@ -393,7 +393,7 @@ div.viewSession{
 div.viewSession a{
     color: #0479a8 !important
 }
-div.viewSession a.btn{
+div.viewSession a.btn, div.viewSession .btn{
     background-color: #0479a8 !important;
     box-shadow: none !important;
     transition: none !important;
@@ -403,7 +403,7 @@ div.viewSession a.btn{
     font-size: 16px;
     border: solid 1px #0479a8 !important;
 }
-div.viewSession a.btn:hover, div.viewSession a.btn:active{
+div.viewSession a.btn:hover, div.viewSession a.btn:active, div.viewSession .btn:hover, , div.viewSession .btn:active{
     background: #ffffff !important;
     color: #0479a8 !important;
     border: solid 1px #0479a8 !important;
