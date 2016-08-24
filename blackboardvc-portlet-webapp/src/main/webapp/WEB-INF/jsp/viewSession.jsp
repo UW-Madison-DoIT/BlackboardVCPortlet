@@ -34,7 +34,7 @@
 
 <div class="viewSession">
 	<div class="row">
-		<div class="col-md-9">
+		<div class="col-md-12">
 			<div>
 				<div class="session-large-heading">${session.sessionName}</div>
 				<span class="session-status">Status:&nbsp;
@@ -78,26 +78,27 @@
 					        <span class="session-descriptive-text"><spring:message code="moderatorLinkDesc" text="moderatorLinkDesc"/></span>
 					    </sec:authorize>
 		   		</div>
+		   		<div class="edit-session-button">
+					<sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
+						<portlet:renderURL var="editSessionUrl" portletMode="EDIT" windowState="${windowState}" >
+							<portlet:param name="sessionId" value="${session.sessionId}" />
+							<portlet:param name="action" value="editSession" />
+						</portlet:renderURL>
+			  			<a href="${editSessionUrl}" class="btn btn-default uportal-button"><spring:message code="editSession" text="Edit Session"/></a>
+					</sec:authorize>
+				</div>
 			</div>
 		</div>
-		<div class="col-md-3">
-			<sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
-				<portlet:renderURL var="editSessionUrl" portletMode="EDIT" windowState="${windowState}" >
-					<portlet:param name="sessionId" value="${session.sessionId}" />
-					<portlet:param name="action" value="editSession" />
-				</portlet:renderURL>
-	  			<a href="${editSessionUrl}" class="btn btn-default uportal-button"><spring:message code="editSession" text="Edit Session"/></a>
-			</sec:authorize>
-		</div>
+		
 	</div>
 </div>
 <div class="viewSession">
 	<div class="row">
 		<div class="col-md-12">
 			<div class="session-large-heading">Invite participants to your web conference</div>
-			<p class="session-descriptive-text">There are 2 ways to invite participants to your web conference.  Invite participants and update participant session settngs.</p>
+			<p class="session-descriptive-text">There are 2 ways to invite participants to your web conference.</p>
 			<div class="session-guest-choice-one">
-				<div class="session-medium-heading">Send participants a Guest Link they can share publically</div>
+				<div class="session-medium-heading">Send participants a Guest Link they can share</div>
 				<sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
 		    	<label for="guestLink">
 		                <span class="uportal-channel-strong">
@@ -141,13 +142,14 @@
 	</div>
 </div>
 <!-- Might need adjustment as this is not testable on test -->
+<c:if test="${telephonyEnabled eq 'true' }" >
 <div class="viewSession">
 	<div class="row">
 		<div class="col-md-12">
 			<div class="session-large-heading">Configure telephone options (optional)</div>
 					<p class="session-descriptive-text">Enter this information if you are using your own telephone line for audio during the web conference.</p>
 					
-			<c:if test="${telephonyEnabled eq 'true' }" >
+			
 					
 						<sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
 							<portlet:renderURL var="configTelephonyURL" portletMode="EDIT" windowState="${windowState}">
@@ -199,7 +201,7 @@
 						<span>No telephone options set. This session will utilize the default integrated telephone.</span>
 					</c:otherwise>
 				</c:choose>
-		</c:if>
+		
 		</div>
 	</div>
 </div>
@@ -209,7 +211,7 @@
 		<hr />
 	</div>
 </div>
-
+</c:if>
 
 <div class="viewSession">
 	<div class="row">
@@ -316,7 +318,7 @@
 </table>   
 <div class="row">
 	<div class="col-md-12">
-		<a href="${backUrl}" class="btn btn-default btn-green uportal-button">Save Session</a>
+		<a href="${backUrl}" class="btn btn-success uportal-button">Save Session</a>
 	</div>
 </div>
 <script type="text/javascript">

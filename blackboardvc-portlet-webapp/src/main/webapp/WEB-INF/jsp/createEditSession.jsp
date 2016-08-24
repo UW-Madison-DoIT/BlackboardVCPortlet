@@ -21,10 +21,11 @@
 <div class="fl-widget portlet error view-detailed" role="section">
 <%@ include file="/WEB-INF/jsp/include.jsp"%>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
-
+<portlet:renderURL var="backUrl" portletMode="VIEW" />
 <div id="${n}" class="blackboardVCRoot">
 <c:if test="${!empty prefs['helpUrl'][0]}">
 	<div class="help-link">
+		<a href="${backUrl}" class="btn btn-default btn-back uportal-button"><< Back to Session List</a>
 		<a href="${createSessionUrl }" id="create-user" class="btn btn-small-blue uportal-button"><spring:message code="scheduleWebConferencingSession" text="scheduleWebConferencingSession"/></a>
 	  <a href="${prefs['helpUrl'][0]}" target="_blank" class="btn btn-outline uportal-button"><spring:message code="help" text="help"/></a>
 	</div>
@@ -60,7 +61,7 @@
 		  <div class="form-group row">
 		    <label for="startDateAndTime" class="col-md-3"><spring:message code="startDateAndTime" text="startDateAndTime"/></label>
 		    <div class="col-md-9">
-				  <form:errors path="" cssClass="error"/>
+				  
 				  <span class="datepair">
 		          <form:input id="${n}startdatepicker" class="date start" path="startDate" style="width: 82px;"/>&nbsp;
 		          
@@ -71,6 +72,7 @@
 		          &nbsp;<form:errors path="startHour" cssClass="error"/>
 		          &nbsp;<form:errors path="startMinute" cssClass="error"/>
 		          &nbsp;<form:errors path="startTime" cssClass="error"/>
+		          &nbsp;<form:errors path="" cssClass="error"/>
 		          <br/>
 	          	<small class="text-muted">mm/dd/yyyy</small>
 		      </div>
