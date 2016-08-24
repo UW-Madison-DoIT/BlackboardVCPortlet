@@ -413,9 +413,8 @@ div.viewSession a.btn:hover, div.viewSession a.btn:active, div.viewSession .btn:
 a.btn.btn-default.btn-back.uportal-button {
     float: left;
 }
-div.viewSession .btn-success{
-    padding-left:60px;
-    padding-right:60px;
+a.btn.btn-success.uportal-button {
+    padding: 7px 80px;
 }
 div.viewSession ul{
     padding-left: 0px;
@@ -423,6 +422,9 @@ div.viewSession ul{
 div.viewSession ul li{
     font-size: 14px;
     text-transform: capitalize;
+}
+div.viewSession label{
+    font-size: 16px;
 }
 .session-label, .session-status {
     font-size: 18px;

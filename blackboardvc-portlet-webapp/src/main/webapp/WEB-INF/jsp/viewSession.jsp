@@ -320,7 +320,7 @@
 		</div>
 	</div>   
 </div>	
-<div class="row">
+<div class="row viewSession">
 	<div class="col-md-12">
 		<a href="${backUrl}" class="btn btn-default uportal-button">Cancel edit</a>
 		<a href="${backUrl}" class="btn btn-success uportal-button">Save Session</a>
