@@ -37,7 +37,7 @@
 		<div class="col-md-9">
 			<div>
 				<div class="session-large-heading">${session.sessionName}</div>
-				<span class="session-status">
+				<span class="session-status">Status:&nbsp;
 				<c:choose>
 				       <c:when test="${session.endTime.beforeNow}">
 				         <spring:message code="sessionIsClosed" text="sessionIsClosed"/>
