@@ -22,6 +22,7 @@
 <%@ include file="/WEB-INF/jsp/include.jsp"%>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 <portlet:renderURL var="backUrl" portletMode="VIEW" />
+<portlet:renderURL var="createSessionUrl" portletMode="EDIT" windowState="${windowState}" />
 <div id="${n}" class="blackboardVCRoot">
 <c:if test="${!empty prefs['helpUrl'][0]}">
 	<div class="help-link">

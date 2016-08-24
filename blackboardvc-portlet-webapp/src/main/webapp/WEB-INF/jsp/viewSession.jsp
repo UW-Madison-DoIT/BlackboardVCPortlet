@@ -23,6 +23,7 @@
 <%@ include file="/WEB-INF/jsp/include.jsp"%>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 <portlet:renderURL var="backUrl" portletMode="VIEW" />
+<portlet:renderURL var="createSessionUrl" portletMode="EDIT" windowState="${windowState}" />
 <div id="${n}blackboardCollaboratePortlet" class="blackboardVCRoot">
 <c:if test="${!empty prefs['helpUrl'][0]}">
 	<div class="help-link">
@@ -54,6 +55,9 @@
 				       </c:otherwise>
 			       </c:choose>
 		   		</span>
+		   		<div>
+							<a href="#recordings">View Recordings</a>
+						</div>
 		   		<c:choose>
 					<c:when test="${!empty recordings }">
 						<div>
@@ -72,8 +76,7 @@
 					                </span>
 					               
 					            </label>
-					        <!--<a href="${session.launchUrl}" target="_blank">${session.launchUrl}</a>-->
-					        <a href="#" title="Please copy the following moderator url: ${session.launchUrl}" class="${n}toolTip">Copy Moderator Link</a>
+					        <a href="${session.launchUrl}" target="_blank">${session.launchUrl}</a>
                 <br/>
 					        <span class="session-descriptive-text"><spring:message code="moderatorLinkDesc" text="moderatorLinkDesc"/></span>
 					    </sec:authorize>
@@ -219,43 +222,44 @@
 			<div class="session-large-heading">Upload media and presentation files</div>
 			<p class="session-descriptive-text">Upload files that will be used during the web conference.</p>
 			<div class="view-session-presentation">
-			<label for="presentationFile">
-                <span class="uportal-channel-strong">
-                    <spring:message code="presentationFile" text="Presentation File" />
-                </span>
-                
-                <span class="session-descriptive-text"><spring:message code="presentationFileDesc" text="" /></span>
-            </label>
-            <portlet:actionURL portletMode="EDIT" var="managePresentationActionUrl" />
-		    <form action="${managePresentationActionUrl}" method="post" enctype="multipart/form-data">
-		      <input type="hidden" name="sessionId" value="${session.sessionId}" />
-		      <input type="hidden" name="needToSendInitialEmail" value="false" />
-			
-			  <c:choose>
-			  <c:when test="${!empty session.presentation }">
-				  ${session.presentation.filename } 
-				  &nbsp;
-				  <portlet:actionURL var="deletePresentationURL" portletMode="EDIT">
-				    <portlet:param name="sessionId" value="${session.sessionId}" />
-				    <portlet:param name="action" value="deletePresentation" />
-				</portlet:actionURL>
-		    	<a href="${deletePresentationURL}" class="destroy" title="Delete">&nbsp;</a>
-			  </c:when>
-			  <c:otherwise>
-			  	No Presentation Uploaded
-			  </c:otherwise>
-			  </c:choose>
-			  <br/>
-              <span class="btn btn-default uploadButton">
-			     <input name="presentationUpload" size="40" type="file" accept="${presentationFileTypes}">
-              </span>
-              <br/>
-              <c:if test="${!empty presentationUploadError}">
-                  <span class="error">${presentationUploadError}</span>
-              </c:if>
-              <spring:message code="uploadPresentation" var="uploadPresentation" text="uploadPresentation"/>
-           	  <input value="${uploadPresentation}" name="action" class="btn btn-default uportal-button" type="submit">
-           	</form>	
+
+
+				<div class="form-group row">
+				    <label for="sessionName" class="col-md-3"><spring:message code="presentationFile" text="Presentation File" /></label>
+				    <div class="col-md-9">
+					    <portlet:actionURL portletMode="EDIT" var="managePresentationActionUrl" />
+						    <form action="${managePresentationActionUrl}" method="post" enctype="multipart/form-data">
+						      <input type="hidden" name="sessionId" value="${session.sessionId}" />
+						      <input type="hidden" name="needToSendInitialEmail" value="false" />
+								<input value="${uploadPresentation}" name="action" class="btn btn-default uportal-button" type="submit">
+				           		<span class="btn btn-default uploadButton">
+							     <input name="presentationUpload" size="40" type="file" accept="${presentationFileTypes}">
+				              </span>
+							  <c:choose>
+							  <c:when test="${!empty session.presentation }">
+								  ${session.presentation.filename } 
+								  &nbsp;
+								  <portlet:actionURL var="deletePresentationURL" portletMode="EDIT">
+								    <portlet:param name="sessionId" value="${session.sessionId}" />
+								    <portlet:param name="action" value="deletePresentation" />
+								</portlet:actionURL>
+						    	<a href="${deletePresentationURL}" class="destroy" title="Delete">&nbsp;</a>
+							  </c:when>
+							  <c:otherwise>
+							  	No Presentation Uploaded
+							  </c:otherwise>
+							  </c:choose>
+							  <br/>
+				              
+				              <br/>
+				              <c:if test="${!empty presentationUploadError}">
+				                  <span class="error">${presentationUploadError}</span>
+				              </c:if>
+				              <spring:message code="uploadPresentation" var="uploadPresentation" text="uploadPresentation"/>
+				           	 </form>	
+			        </div>
+				  </div>
+            
            </div>
            <div class="view-session-media">
            		<label for="mediaFiles">
