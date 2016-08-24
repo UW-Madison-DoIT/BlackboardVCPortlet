@@ -231,10 +231,7 @@
 						    <form action="${managePresentationActionUrl}" method="post" enctype="multipart/form-data">
 						      <input type="hidden" name="sessionId" value="${session.sessionId}" />
 						      <input type="hidden" name="needToSendInitialEmail" value="false" />
-								<input value="${uploadPresentation}" name="action" class="btn btn-default uportal-button" type="submit">
-				           		<span class="btn btn-default uploadButton">
-							     <input name="presentationUpload" size="40" type="file" accept="${presentationFileTypes}">
-				              </span>
+							
 							  <c:choose>
 							  <c:when test="${!empty session.presentation }">
 								  ${session.presentation.filename } 
@@ -250,25 +247,26 @@
 							  </c:otherwise>
 							  </c:choose>
 							  <br/>
-				              
+				              <span class="btn btn-default uploadButton">
+							     <input name="presentationUpload" size="40" type="file" accept="${presentationFileTypes}">
+				              </span>
 				              <br/>
 				              <c:if test="${!empty presentationUploadError}">
 				                  <span class="error">${presentationUploadError}</span>
 				              </c:if>
 				              <spring:message code="uploadPresentation" var="uploadPresentation" text="uploadPresentation"/>
-				           	 </form>	
+				           	  <input value="${uploadPresentation}" name="action" class="btn btn-default uportal-button" type="submit">
+				           	</form>	
 			        </div>
 				  </div>
             
            </div>
            <div class="view-session-media">
-           		<label for="mediaFiles">
-	                <span class="uportal-channel-strong">
-	                    <spring:message code="mediaFiles" text="Media Files" />
-	                </span>
-	                <span class="session-descriptive-text"><spring:message code="mediaFilesDesc" text="" /></span>
-	            </label>
-	            <c:choose>
+
+           	<div class="form-group row">
+		    <label for="sessionName" class="col-md-3"><spring:message code="mediaFiles" text="Media Files" /><spring:message code="sessionName" text="sessionName"/></label>
+		    <div class="col-md-9">
+			    <c:choose>
 					<c:when test="${!empty multimedias }">
 						<ul>
 							<c:forEach items="${multimedias}" var="multimediaItem" varStatus="loopStatus">
@@ -286,7 +284,9 @@
 				    <portlet:param name="action" value="manageMediaFiles" />
 				</portlet:renderURL>
 		    	<a href="${addMediaFileUrl}">Upload Media File(s)</a>
-           	</div.
+	        </div>
+		  </div>
+           	</div>
 		</div>
 	</div>
 </div>
