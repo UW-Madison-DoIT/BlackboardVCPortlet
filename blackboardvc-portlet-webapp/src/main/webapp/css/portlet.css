@@ -339,7 +339,7 @@ h1{
 .bb-content-container .form-group .col-md-3 select{
     float: left;
 }
-.blackboardVCRoot div[id^="Pluto_996_u115l1n107_12861_"] th, .blackboardVCRoot  div[id^="Pluto_2396_u8461l1n153_12861_"] th{
+div[id^="Pluto_996_u115l1n107_12861_"] th, div[id^="Pluto_2396_u8461l1n153_12861_"] th{
     background-color: #ffffff !important;
     color: #000000;
     font-size: 16px;
@@ -409,6 +409,9 @@ div.viewSession a.btn:hover, div.viewSession a.btn:active, div.viewSession .btn:
     border: solid 1px #0479a8 !important;
     transition: none !important;
     transform:none !important;
+}
+a.btn.btn-success.uportal-button {
+    background-color: #009411 !important;
 }
 a.btn.btn-default.btn-back.uportal-button {
     float: left;
