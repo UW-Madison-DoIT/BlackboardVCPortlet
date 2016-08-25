@@ -21,10 +21,11 @@
 
 <%@ include file="/WEB-INF/jsp/include.jsp"%>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
-
+<portlet:renderURL var="backUrl" portletMode="VIEW" />
 <div id="${n}blackboardCollaboratePortlet" class="blackboardVCRoot">
 <c:if test="${!empty prefs['helpUrl'][0]}">
     <div class="help-link">
+      <a href="${backUrl}" class="btn btn-default btn-back uportal-button"><< Back to Session List</a>  
       <a href="${createSessionUrl }" id="create-user" class="btn btn-small-blue uportal-button"><spring:message code="scheduleWebConferencingSession" text="scheduleWebConferencingSession"/></a>
       <a href="${prefs['helpUrl'][0]}" target="_blank" class="btn btn-default uportal-button"><spring:message code="help" text="help"/></a>
     </div>
@@ -44,20 +45,21 @@
 <table class="participantList">
   <thead>
     <tr>
-      <th colspan="4" style="text-align: left;">
+      <td colspan="5" style="text-align: left;">
         <h3>Invite / Edit Participants</h3>
         <small><i>Note: Participants listed here will receive an email invitation. Alternatively, you could manually share the Guest Link with participants.</i></small>
-      </th>
+      </td>
     </tr>
     <tr>
-        <th style="text-align: left;">Select</th>
-        <th style="text-align: left;">Name</th>
-        <th style="text-align: left;">Email Address</th>
-        <th style="text-align: left;">
+        <td style="text-align: left;">Select</td>
+        <td style="text-align: left;">Name</td>
+        <td style="text-align: left;">Email Address</td>
+        <td style="text-align: left;">
         	Moderator
         	<spring:message code="tooltip.whatIsModerator" text="tooltip.whatIsModerator" var="tooltipWhatIsModerator" htmlEscape="false" />
 			&nbsp;<a href="#" title="${ tooltipWhatIsModerator}" class="${n}toolTip"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a>
-        </th>
+        </td>
+        <td></td>
     </tr>
   </thead>
   <tbody>
@@ -79,13 +81,14 @@
           <option selected="selected"  value="false">No</option>
         </select>
       </td>
+      <td><button class="btn btn-default uportal-button" name="addParticipant">Add Participant</button></td>
     </tr>
     <tr>
-      <td colspan="2" align="left"><button class="btn btn-default uportal-button" name="deleteSelected">Delete Selected</button></td>
-      <td colspan="2" align="right"><button class="btn btn-default uportal-button" name="addParticipant">Add Participant</button></td>
+      <td colspan="5" align="left"><button class="btn btn-default uportal-button" name="deleteSelected">Delete Selected</button></td>
+      
     </tr>
     <tr>
-      <td colspan="4" align="left"><a href="${viewSessionUrl}" class="btn btn-default uportal-button">Complete</a></td>
+      <td colspan="5" align="left"><a href="${viewSessionUrl}" class="btn btn-success uportal-button">Save Participants</a></td>
     </tr>
   </tfoot>
 </table>
