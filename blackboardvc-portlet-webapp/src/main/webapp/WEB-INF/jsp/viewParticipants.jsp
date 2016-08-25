@@ -34,15 +34,13 @@
    <portlet:param name="sessionId" value="${session.sessionId}" />
    <portlet:param name="action" value="viewSession" />
 </portlet:renderURL>
-<table class="sessionName">
-  <thead>
-    <tr>
-        <th style="text-align: left;"><spring:message code="sessionName"/></th>
-        <th style="text-align: right;"><a href="${viewSessionUrl}">${session.sessionName}</a></th>
-    </tr>
-  </thead>
-</table>
-<br/>
+<div class="viewSession">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="session-large-heading">${session.sessionName}</div>
+      </div>
+    </div>
+</div>
 <table class="participantList">
   <thead>
     <tr>
