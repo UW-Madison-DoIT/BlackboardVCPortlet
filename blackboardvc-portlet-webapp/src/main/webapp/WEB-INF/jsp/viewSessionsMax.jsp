@@ -47,12 +47,12 @@
       <table width="100%" id="sessionList">
         <thead>
           <tr class="uportal-channel-table-header">
-            <th class="dt" style="width: 1em;"><input id="${n}selectAllSessions-new" value="selectAllSessions" name="selectAllSessions" type="checkbox" /></th>
-            <th class="dt" ><spring:message code="sessionName" text="sessionName"/></th>
-            <th class="dt" ><spring:message code="startDateAndTime" text="startDateAndTime"/></th>
-            <th class="dt" ><spring:message code="endDateAndTime" text="endDateAndTime"/></th>
+            <td class="row-heading" style="width: 1em;"><input id="${n}selectAllSessions-new" value="selectAllSessions" name="selectAllSessions" type="checkbox" /></td>
+            <td class="row-heading" ><spring:message code="sessionName" text="sessionName"/></td>
+            <td class="row-heading" ><spring:message code="startDateAndTime" text="startDateAndTime"/></td>
+            <td class="row-heading" ><spring:message code="endDateAndTime" text="endDateAndTime"/></td>
                         <spring:message code="statusText" text="statusText" var="statusText" htmlEscape="false" />
-            <th class="dt" style="width: 20em;" id="${n}statusToolTip"><spring:message code="status" text="status"/>&nbsp;<a href="#" title="${ statusText}" class="${n}statusLink"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a></th>
+            <td class="row-heading" style="width: 20em;" id="${n}statusToolTip"><spring:message code="status" text="status"/>&nbsp;<a href="#" title="${ statusText}" class="${n}statusLink"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a></td>
           </tr>
         </thead>
         <tbody>
@@ -60,7 +60,7 @@
       </table>
       <table>
 	      <tr  width="100%" >
-		      <td align="left">
+		      <td class="row-spacing" align="left">
 		            <spring:message code="deleteSession" var="deleteSession" text="deleteSession"/>
 		            <spring:message code="areYouSureYouWantToDeleteSession" var="areYouSureYouWantToDeleteSession" text="areYouSureYouWantToDeleteSession"/>
 		          <input id="dialog-confirm" value="${deleteSession}" name="Delete"
@@ -93,12 +93,12 @@
       <table width="100%" id="completedSessionList">
         <thead>
           <tr class="uportal-channel-table-header">
-            <th style="width: 1em;"><input id="${n}selectAllSessions-old" value="selectAllSessions" name="selectAllSessions" type="checkbox" /></th>
-            <th><spring:message code="sessionName" text="sessionName"/></th>
-            <th><spring:message code="startDateAndTime" text="startDateAndTime"/></th>
-            <th><spring:message code="endDateAndTime" text="endDateAndTime"/></th>
+            <td class="row-heading" style="width: 1em;"><input id="${n}selectAllSessions-old" value="selectAllSessions" name="selectAllSessions" type="checkbox" /></td>
+            <td class="row-heading"><spring:message code="sessionName" text="sessionName"/></td>
+            <td class="row-heading"><spring:message code="startDateAndTime" text="startDateAndTime"/></td>
+            <td class="row-heading"><spring:message code="endDateAndTime" text="endDateAndTime"/></td>
             <spring:message code="statusText" text="statusText" var="statusText" htmlEscape="false" />
-            <th style="width: 20em;" id="${n}statusToolTip"><spring:message code="status" text="status"/>&nbsp;<a href="#" title="${ statusText}" class="${n}statusLink"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a></th>
+            <td class="row-heading" style="width: 20em;" id="${n}statusToolTip"><spring:message code="status" text="status"/>&nbsp;<a href="#" title="${ statusText}" class="${n}statusLink"><img src='<c:url value="/images/questionmark.jpg"/>' alt="?"/></a></td>
           </tr>
         </thead>
         <tbody>
@@ -106,7 +106,7 @@
       </table>
       <table>
 	      <tr  width="100%" >
-		      <td align="left">
+		      <td class="row-spacing" align="left">
 		            <spring:message code="deleteSession" var="deleteSession" text="deleteSession"/>
 		            <spring:message code="areYouSureYouWantToDeleteSession" var="areYouSureYouWantToDeleteSession" text="areYouSureYouWantToDeleteSession"/>
 		          <input id="dialog-confirm" value="${deleteSession}" name="Delete"
