@@ -46,8 +46,8 @@
   <thead>
     <tr>
       <td colspan="5" style="text-align: left;">
-        <h3>Invite / Edit Participants</h3>
-        <small><i>Note: Participants listed here will receive an email invitation. Alternatively, you could manually share the Guest Link with participants.</i></small>
+        <div class="session-medium-heading">Invite / Edit Participants</div>
+        <p class="session-descriptive-text">Note: Participants listed here will receive an email invitation. Alternatively, you could manually share the Guest Link with participants.</p>
       </td>
     </tr>
     <tr>
@@ -70,6 +70,7 @@
       <td>
         <div class="ajaxerror name"></div>
         <input type="text" name="newName"/>
+        <div><button class="btn btn-default uportal-button" name="addParticipant">Add Participant</button></div>
       </td>
       <td>
         <div class="ajaxerror email"></div>
@@ -81,11 +82,11 @@
           <option selected="selected"  value="false">No</option>
         </select>
       </td>
-      <td><button class="btn btn-default uportal-button" name="addParticipant">Add Participant</button></td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="5" align="left"><button class="btn btn-default uportal-button" name="deleteSelected">Delete Selected</button></td>
-      
+      <td align="left"><button class="btn btn-default uportal-button" name="deleteSelected">Delete</button></td>
+      <td colspan="4"></td>
     </tr>
     <tr>
       <td colspan="5" align="left"><a href="${viewSessionUrl}" class="btn btn-success uportal-button">Save Participants</a></td>
