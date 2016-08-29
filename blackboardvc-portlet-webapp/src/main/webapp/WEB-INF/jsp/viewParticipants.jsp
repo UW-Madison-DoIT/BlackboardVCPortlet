@@ -38,7 +38,7 @@
 <div class="viewSession">
   <div class="row">
     <div class="col-md-12">
-      <div class="session-large-heading">${session.sessionName}</div>
+      <div class="session-large-heading"><a href="${viewSessionUrl}">${session.sessionName}</a></div>
       </div>
     </div>
 </div>
@@ -70,7 +70,7 @@
       <td>
         <div class="ajaxerror name"></div>
         <input type="text" name="newName"/>
-        <div><button class="btn btn-default uportal-button" name="addParticipant">Add Participant</button></div>
+        
       </td>
       <td>
         <div class="ajaxerror email"></div>
@@ -83,6 +83,10 @@
         </select>
       </td>
       <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td colspan="4"><div><button class="btn btn-default uportal-button" name="addParticipant">Add Participant</button></div></td>
     </tr>
     <tr>
       <td align="left"><button class="btn btn-default uportal-button" name="deleteSelected">Delete</button></td>

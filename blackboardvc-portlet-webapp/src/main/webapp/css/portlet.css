@@ -339,7 +339,7 @@ h1{
 .bb-content-container .form-group .col-md-3 select{
     float: left;
 }
-.blackboardVCRoot td.row-header, .blackboardVCRoot{
+.blackboardVCRoot td.row-heading{
     background-color: #ffffff !important;
     color: #000000;
     font-size: 16px;

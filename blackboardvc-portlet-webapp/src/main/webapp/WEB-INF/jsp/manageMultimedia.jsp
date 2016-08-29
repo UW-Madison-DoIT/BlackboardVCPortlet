@@ -37,23 +37,27 @@
 <div class="error">
 <span class="uportal-channel-strong">${multimediaUploadError}</span>
 </div>
-<table class="sessionName">
-  <thead>
-    <tr>
-        <td style="text-align: left;"><span class="uportal-channel-strong"><spring:message code="sessionName"/></span></td>
-        <td style="text-align: right;"><a href="${viewSessionUrl}">${session.sessionName}</a></td>
-    </tr>
-  </thead>
-</table>
+
+
+
+
+
+
+<div class="viewSession">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="session-large-heading"><a href="${viewSessionUrl}">${session.sessionName}</a></div>
+      </div>
+    </div>
+</div>
+
+<div class="viewSession">
+  <div class="session-medium-heading">Upload / Edit Media Files</div>
+  <p class="session-descriptive-text">You may upload most common video formats, including .mpeg, .mpg, .mpe, .mov, .qt, .swf, .m4v, .mp3, .mp4, .wmv.</p>
+      
+</div>
 
 <table class="mediaFileList">
-  <thead>
-    <tr>
-      <th colspan="4" style="text-align: left;">
-        <h2>Upload / Edit Media Files</h2><br/>
-        <small>You may upload most common video formats, including .mpeg, .mpg, .mpe, .mov, .qt, .swf, .m4v, .mp3, .mp4, .wmv.</small>
-      </th>
-    </tr>
     <tr>
       <td style="text-align: left;"><span class="uportal-channel-strong">Select</span></td><td style="text-align: left;"><span class="uportal-channel-strong">Media Files</span></td>
     </tr>
@@ -77,10 +81,11 @@
       </td>
     </tr>
     <tr>
-      <td colspan="2" align="left"><button name="deleteSelected">Delete Selected</button></td>
+      <td align="left"><button name="deleteSelected" class="btn btn-default uportal-button">Delete</button></td>
+      <td></td>
     </tr>
     <tr>
-      <td colspan="2" align="left"><a href="${viewSessionUrl}" class="btn btn-default uportal-button">&lt; Back</a></td>
+      <td colspan="2" align="left"><a href="${viewSessionUrl}" class="btn btn-success uportal-button">&lt; Save Media</a></td>
     </tr>
   </tfoot>
 </table>
