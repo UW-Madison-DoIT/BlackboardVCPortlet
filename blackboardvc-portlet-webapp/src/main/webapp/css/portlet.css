@@ -83,15 +83,19 @@ p.uportal-channel-success {padding:1em 1em 1em 3em; border:2px solid; color:#004
 	background-color: #ffffff !important;
 	width : 80%;
 }
-
+.blackboardVCRoot table{
+    margin-bottom:20px;
+}
 .blackboardVCRoot table .odd {
 	background-color:#fff;
 }
 
 .blackboardVCRoot table .even {
-	background-color:#eee;
+	background-color:#fff;
 }
-
+.blackboardVCRoot table .even td, .blackboardVCRoot table .odd td{
+    padding:10px 0;
+}
 .blackboardVCRoot table .sorting {
 	background: url("../images/sort_both.png") no-repeat center right;
 }
