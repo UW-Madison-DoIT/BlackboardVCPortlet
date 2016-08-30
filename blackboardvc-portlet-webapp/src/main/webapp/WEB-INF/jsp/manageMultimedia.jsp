@@ -77,9 +77,10 @@
         <form action="${uploadMediaFileActionUrl}" method="post" enctype="multipart/form-data">
           <div class="ajaxerror file"></div>
           <div>
-            <input name="multimediaUpload" size="40" type="file" accept="${multimediaFileTypes}"> <button name="uploadFile" type="submit">Upload File</button>
+            <input name="multimediaUpload" size="40" type="file" accept="${multimediaFileTypes}"> 
           </div>
           <div>Accepted file formats: .mpeg, .mpg, .mpe, .mov, .qt, .swf, .m4v, .mp3, .mp4, mpeg, .wmv</div>
+          <button class="btn btn-default uportal-button" name="uploadFile" type="submit">Upload File</button>
         </form>
       </td>
     </tr>
