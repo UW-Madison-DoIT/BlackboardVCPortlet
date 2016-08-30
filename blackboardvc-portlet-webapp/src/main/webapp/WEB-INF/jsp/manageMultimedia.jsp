@@ -79,7 +79,7 @@
           <div>
             <input name="multimediaUpload" size="40" type="file" accept="${multimediaFileTypes}"> 
           </div>
-          <div>Accepted file formats: .mpeg, .mpg, .mpe, .mov, .qt, .swf, .m4v, .mp3, .mp4, mpeg, .wmv</div>
+          <p class="session-descriptive-text">Accepted file formats: .mpeg, .mpg, .mpe, .mov, .qt, .swf, .m4v, .mp3, .mp4, mpeg, .wmv</p>
           <button class="btn btn-default uportal-button" name="uploadFile" type="submit">Upload File</button>
         </form>
       </td>
