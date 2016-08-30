@@ -21,11 +21,14 @@
 
 <%@ include file="/WEB-INF/jsp/include.jsp"%>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
-
+<portlet:renderURL var="backUrl" portletMode="VIEW" />
+<portlet:renderURL var="createSessionUrl" portletMode="EDIT" windowState="${windowState}" />
 <div id="${n}blackboardCollaboratePortlet" class="blackboardVCRoot">
 <c:if test="${!empty prefs['helpUrl'][0]}">
     <div class="help-link">
-      <a href="${prefs['helpUrl'][0]}" target="_blank" class="btn btn-default uportal-button"><spring:message code="help" text="help"/></a>
+      <a href="${backUrl}" class="btn btn-default btn-back uportal-button"><< Back to Session List</a>
+    <a href="${createSessionUrl }" id="create-user" class="btn btn-small-blue uportal-button"><spring:message code="scheduleWebConferencingSession" text="scheduleWebConferencingSession"/></a>
+    <a href="${prefs['helpUrl'][0]}" target="_blank" class="btn btn-default uportal-button"><spring:message code="help" text="help"/></a>
     </div>
 </c:if>
 
