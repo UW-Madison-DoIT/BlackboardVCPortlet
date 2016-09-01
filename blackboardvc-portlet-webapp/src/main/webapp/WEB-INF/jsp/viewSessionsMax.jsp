@@ -79,7 +79,7 @@
         <h2 class="view-title">Schedule a web conference!</h2>
         <b>No sessions scheduled</b>
         <p><a href="${createSessionUrl }" id="create-user" class="btn btn-flat uportal-button"><spring:message code="scheduleWebConferencingSession" text="scheduleWebConferencingSession"/></a></p>
-        <p class="highlighted-link"><a href="#${n}tabs-2">See past web conference sessions</a></p>
+        
       </div>
     </c:otherwise>
   </c:choose>
