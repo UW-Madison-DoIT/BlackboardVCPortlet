@@ -137,10 +137,10 @@ public class RecordingServiceImpl implements RecordingService {
     }
 
     /**
-     * Run cron job every day at 10am
+     * Run cron job every day at 12am, 10am, 12pm, 2pm, and 4pm
      * @throws UnknownHostException
      */
-    @Scheduled(cron = "0 0 0,10,12,14,16 * * *")
+    @Scheduled(cron = "0 0,10,12,14,16 * * *")
     @Override
     public void cronDatafixRecordings() throws UnknownHostException {
       try {
