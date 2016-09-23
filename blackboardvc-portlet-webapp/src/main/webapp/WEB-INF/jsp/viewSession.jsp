@@ -98,7 +98,7 @@
 			<div class="session-large-heading">Invite participants to your web conference</div>
 			<p class="session-descriptive-text">There are 2 ways to invite participants to your web conference.</p>
 			<div class="session-guest-choice-one">
-				<div class="session-medium-heading">Send participants a Guest Link they can share</div>
+				<div class="session-medium-heading">Share a link with others to join your session.</div>
 				<sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
 		    	<label for="guestLink">
 		                <span class="uportal-channel-strong">
