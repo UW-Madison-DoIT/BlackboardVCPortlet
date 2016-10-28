@@ -221,31 +221,31 @@
 			<div class="view-session-presentation">
 
 
-				<div class="form-group row">
+				  <div class="form-group row">
 				    <label for="sessionName" class="col-md-3"><spring:message code="presentationFile" text="Presentation File" /></label>
-				    <div class="col-md-9">
-					    <portlet:actionURL portletMode="EDIT" var="managePresentationActionUrl" />
-						    <form action="${managePresentationActionUrl}" method="post" enctype="multipart/form-data">
-						      <input type="hidden" name="sessionId" value="${session.sessionId}" />
-						      <input type="hidden" name="needToSendInitialEmail" value="false" />
+				      <div class="col-md-9">
+					        <portlet:actionURL portletMode="EDIT" var="managePresentationActionUrl" />
+						        <form action="${managePresentationActionUrl}" method="post" enctype="multipart/form-data">
+						          <input type="hidden" name="sessionId" value="${session.sessionId}" />
+						          <input type="hidden" name="needToSendInitialEmail" value="false" />
 							
-							  <c:choose>
-							  <c:when test="${!empty session.presentation }">
-								  ${session.presentation.filename } 
-								  &nbsp;
-								  <portlet:actionURL var="deletePresentationURL" portletMode="EDIT">
-								    <portlet:param name="sessionId" value="${session.sessionId}" />
-								    <portlet:param name="action" value="deletePresentation" />
-								</portlet:actionURL>
-						    	<a href="${deletePresentationURL}" class="destroy" title="Delete">&nbsp;</a>
-							  </c:when>
-							  <c:otherwise>
-							  	No Presentation Uploaded
-							  </c:otherwise>
-							  </c:choose>
-							  <br/>
+							      <c:choose>
+							      <c:when test="${!empty session.presentation }">
+								      ${session.presentation.filename } 
+								      &nbsp;
+								      <portlet:actionURL var="deletePresentationURL" portletMode="EDIT">
+								        <portlet:param name="sessionId" value="${session.sessionId}" />
+								        <portlet:param name="action" value="deletePresentation" />
+								      </portlet:actionURL>
+						    	    <a href="${deletePresentationURL}" class="destroy" title="Delete">&nbsp;</a>
+							      </c:when>
+							      <c:otherwise>
+							  	     No Presentation Uploaded
+							      </c:otherwise>
+							      </c:choose>
+							      <br/>
 				              <span class="uploadButton">
-							     <input name="presentationUpload" size="40" type="file" accept="${presentationFileTypes}">
+							      <input name="presentationUpload" size="40" type="file" accept="${presentationFileTypes}">
 				              </span>
 				              <c:if test="${!empty presentationUploadError}">
 				                  <span class="error">${presentationUploadError}</span>
@@ -260,7 +260,7 @@
 			        </div>
 				  </div>
             
-           </div>
+      </div>
            <div class="view-session-media">
 
            	<div class="form-group row">
@@ -307,15 +307,15 @@
 		<div class="col-md-12">
 			<c:choose>
 				<c:when test="${!empty recordings }">
-				<ul>
-					<c:forEach items="${recordings }" var="recording">
-						<li><a href="${recording.recordingUrl}" target="_blank">${recording.roomName}</a></li>
-					</c:forEach>
-				</ul>
-				</c:when>
-				<c:otherwise>
-					No Recordings available
-				</c:otherwise>
+              <ul>
+                  <c:forEach items="${recordings }" var="recording">
+                      <li><a href="${recording.recordingUrl}" target="_blank">${recording.roomName}</a></li>
+                  </c:forEach>
+              </ul>
+          </c:when>
+          <c:otherwise>
+              No Recordings available
+          </c:otherwise>
 			</c:choose>
 		</div>
 	</div>   
