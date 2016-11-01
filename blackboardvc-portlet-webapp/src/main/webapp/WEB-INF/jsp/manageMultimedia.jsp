@@ -41,11 +41,6 @@
 <span class="uportal-channel-strong">${multimediaUploadError}</span>
 </div>
 
-
-
-
-
-
 <div class="viewSession">
   <div class="row">
     <div class="col-md-12">
