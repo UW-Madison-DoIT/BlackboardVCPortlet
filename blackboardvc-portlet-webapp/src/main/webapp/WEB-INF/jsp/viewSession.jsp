@@ -97,6 +97,8 @@
 		<div class="col-md-12">
 			<div class="session-large-heading">Invite participants to your web conference</div>
 			<p class="session-descriptive-text">There are 2 ways to invite participants to your web conference.</p>
+			<br/>
+      <span class="session-descriptive-text"><spring:message code="telephonyWarning" text="telephonyWarning" /></span>
 			<div class="session-guest-choice-one">
 				<div class="session-medium-heading">Share a link with others to join your session.</div>
 				<sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
