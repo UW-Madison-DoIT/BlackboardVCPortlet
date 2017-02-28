@@ -1,9 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <parent>
-        <groupId>edu.wisc.doit.code</groupId>
-        <artifactId>shared-tools-uw-parent</artifactId>
-        <version>7</version>
+        <groupId>edu.wisc.my</groupId>
+        <artifactId>myuw-parent</artifactId>
+        <version>4</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -25,53 +25,12 @@
         <module>blackboardvc-portlet-uw_iaa</module>
     </modules>
 
-    <distributionManagement>
-        <repository>
-            <id>code.doit-uw-releases</id>
-            <name>code.doit-uw-releases</name>
-            <url>https://code.doit.wisc.edu/maven/content/repositories/uw-releases</url>
-        </repository>
-        <snapshotRepository>
-            <id>code.doit-uw-snapshots</id>
-            <name>code.doit-uw-snapshots</name>
-            <url>https://code.doit.wisc.edu/maven/content/repositories/uw-snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
-
     <repositories>
         <repository>
-            <id>code.doit-public-releases</id>
-            <name>code.doit-public-releases</name>
-            <url>https://code.doit.wisc.edu/maven/content/repositories/public-releases</url>
-        </repository>
-        <repository>
-            <id>code.doit-public-snapshots</id>
-            <name>code.doit-public-snapshots</name>
-            <url>https://code.doit.wisc.edu/maven/content/repositories/public-snapshots</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>code.doit-uw-releases</id>
-            <name>code.doit-uw-releases</name>
-            <url>https://code.doit.wisc.edu/maven/content/repositories/uw-releases</url>
-        </repository>
-        <repository>
-            <id>code.doit-release-proxies</id>
-            <name>code.doit-release-proxies</name>
-            <url>https://code.doit.wisc.edu/maven/content/groups/release-proxies</url>
-        </repository>
-        <repository>
-            <id>sonatype-nexus-snapshots</id>
-            <name>Sonatype Nexus Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
+            <id>myuw-releases</id>
+            <url>https://artifacts.doit.wisc.edu/artifactory/myuw-maven-local-release/</url>
+            <releases><enabled>true</enabled></releases>
+            <snapshots><enabled>false</enabled></snapshots>
         </repository>
     </repositories>
 
@@ -97,7 +56,7 @@
         <jackson2.version>2.2.2</jackson2.version>
         <jaxb2basics.version>0.6.3</jaxb2basics.version>
         <portlet-utils.version>1.1.0</portlet-utils.version>
-        <resource-server.version>1.0.38</resource-server.version>
+        <resource-server.version>1.0.44</resource-server.version>
         <slf4j.version>1.7.4</slf4j.version>
         <spring-portlet-contrib.version>1.2.0</spring-portlet-contrib.version>
         <ical4j.version>1.0.4</ical4j.version>
@@ -113,6 +72,12 @@
               <groupId>com.atg</groupId>
               <artifactId>json-taglib</artifactId>
               <version>0.4.1</version>
+              <exclusions>
+                <exclusion>
+                  <groupId>commons-logging</groupId>
+                  <artifactId>commons-logging</artifactId>
+                </exclusion>
+              </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.springframework.security</groupId>
@@ -333,11 +298,6 @@
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-validator</artifactId>
                 <version>${hibernate-validator.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>javax.sql</groupId>
-                <artifactId>jdbc-stdext</artifactId>
-                <version>2.0</version>
             </dependency>
             <dependency>
                 <groupId>javax.transaction</groupId>
