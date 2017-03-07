@@ -95,13 +95,13 @@
 <div class="viewSession">
 	<div class="row">
 		<div class="col-md-12">
+			<sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
 			<div class="session-large-heading">Invite participants to your web conference</div>
 			<p class="session-descriptive-text">There are 2 ways to invite participants to your web conference.</p>
 			<br/>
       <span class="session-descriptive-text"><spring:message code="telephonyWarning" text=" " /></span>
 			<div class="session-guest-choice-one">
 				<div class="session-medium-heading">Share a link with others to join your session.</div>
-				<sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
 		    	<label for="guestLink">
 		                <span class="uportal-channel-strong">
 		                    <spring:message code="guestLink" text="guestLink"/>
@@ -109,20 +109,18 @@
 		                </label>
 		            <a href="${session.guestUrl}" target="_blank">${session.guestUrl}</a>
 		            <span class="session-descriptive-text"><spring:message code="guestLinkDesc" text="guestLinkDesc"/></span>
-		    	</sec:authorize>
 			</div>
 			<div class="divider"><span>OR</span></div>
 			<div class="session-guest-choice-two">
 
 				<div class="session-medium-heading">Send participants an email invite</div>
 				<span class="session-descriptive-text">Use this to invite participants to a private web conference session via email. Participants will recieve a unique link to enter their session.</span>
-				<sec:authorize access="hasRole('ROLE_ADMIN') || hasPermission(#session, 'edit')">
+				
 			    	<portlet:renderURL var="addParticipantsUrl" portletMode="EDIT" windowState="${windowState}">
 					    <portlet:param name="sessionId" value="${session.sessionId}" />
 					    <portlet:param name="action" value="addParticipants" />
 					</portlet:renderURL>
 			    	<a href="${addParticipantsUrl}" class="btn btn-default uportal-button">+ Email Participants</a>
-				</sec:authorize>	
 			<div><strong>Participants:</strong></div>
 			<ul>
 		      <c:forEach var="user" items="${sessionChairs}">
@@ -134,6 +132,7 @@
 		    </ul>
 		    
 			</div>
+		</sec:authorize>
 		</div>
 	</div>
 </div>
