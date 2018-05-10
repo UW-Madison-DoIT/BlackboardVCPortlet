@@ -32,7 +32,7 @@
         <property name="jdbcInterceptors" value="ConnectionState(useEquals=true);ResetAbandonedTimer"/>
         <property name="testWhileIdle" value="true" />
         <property name="testOnBorrow" value="true" />
-        <property name="connectionProperties" value="oracle.net.CONNECT_TIMEOUT=5000;oracle.net.READ_TIMEOUT=30000;oracle.jdbc.ReadTimeout=30000" />
+        <property name="connectionProperties" value="oracle.net.CONNECT_TIMEOUT=5000;oracle.net.READ_TIMEOUT=30000;oracle.jdbc.ReadTimeout=30000;oracle.net.encryption_client=REQUIRED;" />
     </bean>
     
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" depends-on="BlackboardCollaborate.cacheManager">
