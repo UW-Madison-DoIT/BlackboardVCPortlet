@@ -3,7 +3,7 @@
     <parent>
         <groupId>edu.wisc.my</groupId>
         <artifactId>myuw-parent</artifactId>
-        <version>4</version>
+        <version>6</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
