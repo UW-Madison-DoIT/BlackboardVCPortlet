@@ -85,6 +85,7 @@
         <property name="persistenceUnitName" value="BlackboardCollaborateDb" />
         <property name="jpaProperties">
             <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
                 <prop key="hibernate.cache.use_query_cache">false</prop>
                 <prop key="hibernate.cache.use_second_level_cache">false</prop>
                 <prop key="persistenceUnitName">BlackboardCollaborateDb</prop>
