@@ -35,8 +35,8 @@
     </repositories>
 
     <scm>
-        <connection>scm:git:git@github.com:UW-Madison-DoIT/BlackboardVCPortlet.git</connection>
-        <developerConnection>scm:git:git@github.com:UW-Madison-DoIT/BlackboardVCPortlet.git</developerConnection>
+        <connection>scm:git:https://github.com/UW-Madison-DoIT/BlackboardVCPortlet.git</connection>
+        <developerConnection>scm:git:https://github.com/UW-Madison-DoIT/BlackboardVCPortlet.git</developerConnection>
         <url>https://github.com/UW-Madison-DoIT/BlackboardVCPortlet</url>
       <tag>HEAD</tag>
   </scm>
